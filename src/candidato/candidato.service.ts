@@ -99,35 +99,12 @@ export class CandidatoService {
     }
   }
   async remove(id: number) {
-    const candidatoexist = await this.candidato.findByPk(id);
+    const candidatoexist: Candidato = await this.candidato.findByPk(id);
 
     if (!candidatoexist) {
       throw new Error('Usuario não existe');
     }
 
     await this.candidato.destroy({ where: { id } });
-  }
-
-  async gerarAutenticacao(email: string, senha: string) {
-    const candidato = await this.candidato.findOne({ where: { email } });
-
-    if (!candidato) {
-      throw new Error('Não existe candidato com esse email');
-    }
-
-    const compararSenha = await bcrypt.compare(senha, candidato.senha);
-
-    if (!compararSenha) {
-      throw new Error('Senha incorreta');
-    }
-
-    const token = this.gerarToken;
-
-    return { id: candidato.id, nome: candidato.nome, token };
-  }
-
-  private gerarToken(id: number) {
-    const token = sign({ id }, process.env.TOKEN, { expiresIn: '7d' });
-    return token;
   }
 }

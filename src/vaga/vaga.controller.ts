@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Put,
 } from '@nestjs/common';
 import { VagaService } from './vaga.service';
 import { CreateVagaDto } from './dto/create-vaga.dto';
@@ -30,7 +31,7 @@ export class VagaController {
     return this.vagaService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateVagaDto: UpdateVagaDto) {
     return this.vagaService.update(+id, updateVagaDto);
   }
