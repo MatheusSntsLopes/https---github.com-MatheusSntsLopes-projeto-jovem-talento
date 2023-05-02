@@ -12,7 +12,6 @@ import {
 export class CreateEmpresarioDto {
   @MinLength(11)
   @IsNotEmpty()
-  @IsInt()
   telefone: string;
 
   @IsNotEmpty()
@@ -20,7 +19,7 @@ export class CreateEmpresarioDto {
 
   @IsNotEmpty()
   @MinLength(11)
-  cpf: string;
+  cnpj: string;
 
   @IsNotEmpty()
   numero: string;

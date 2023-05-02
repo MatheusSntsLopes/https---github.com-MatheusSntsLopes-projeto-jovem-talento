@@ -5,6 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Empresario } from './entities/empresario.entity';
 
 @Module({
+  imports: [SequelizeModule.forFeature([Empresario])],
   controllers: [EmpresarioController],
   providers: [EmpresarioService],
 })

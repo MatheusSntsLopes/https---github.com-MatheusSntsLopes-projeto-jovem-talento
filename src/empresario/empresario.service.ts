@@ -1,26 +1,109 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateEmpresarioDto } from './dto/create-empresario.dto';
 import { UpdateEmpresarioDto } from './dto/update-empresario.dto';
-
+import { Empresario } from './entities/empresario.entity';
+import { InjectModel } from '@nestjs/sequelize';
+import * as bcrypt from 'bcrypt';
+import { Vaga } from 'src/vaga/entities/vaga.entity';
 @Injectable()
 export class EmpresarioService {
-  create(createEmpresarioDto: CreateEmpresarioDto) {
-    return 'This action adds a new empresario';
+  constructor(
+    @InjectModel(Empresario) private readonly empresario: typeof Empresario,
+  ) {}
+
+  async create(empresarioDto: CreateEmpresarioDto): Promise<Empresario> {
+    try {
+      const empresarioNovo = {
+        ...empresarioDto,
+        senha: await bcrypt.hash(empresarioDto.senha, 10),
+      };
+      const empresarioCriado: Empresario = await this.empresario.create(
+        empresarioNovo,
+      );
+
+      return empresarioCriado;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
-  findAll() {
-    return `This action returns all empresario`;
+  findAll(): Promise<Empresario[]> {
+    return this.empresario.findAll({
+      attributes: { exclude: ['senha'] },
+      include: Vaga,
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} empresario`;
+  async findOne(id: number): Promise<Empresario> {
+    const empresarioEncontrado: Empresario = await this.empresario.findOne({
+      where: { id },
+      attributes: { exclude: ['senha'] },
+      include: Vaga,
+    });
+
+    if (!empresarioEncontrado) {
+      throw new NotFoundException('Candidato não encontrado.');
+    }
+
+    return empresarioEncontrado;
   }
 
-  update(id: number, updateEmpresarioDto: UpdateEmpresarioDto) {
-    return `This action updates a #${id} empresario`;
+  async update(
+    id: number,
+    {
+      email,
+      nome,
+      senha,
+      cnpj,
+      bairro,
+      cep,
+      cidade,
+      estado,
+      numero,
+      rua,
+      telefone,
+    }: UpdateEmpresarioDto,
+  ): Promise<Empresario> {
+    try {
+      const empresarioExiste: Empresario = await this.empresario.findByPk(id, {
+        rejectOnEmpty: true,
+      });
+
+      if (!empresarioExiste) {
+        throw new Error('Usuario não existe');
+      }
+
+      const novosDados: Empresario = await empresarioExiste.update({
+        email,
+        nome,
+        senha,
+        cnpj,
+        bairro,
+        cep,
+        cidade,
+        estado,
+        numero,
+        rua,
+        telefone,
+      });
+
+      return novosDados;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} empresario`;
+  async remove(id: number) {
+    const empresarioexist: Empresario = await this.empresario.findByPk(id);
+
+    if (!empresarioexist) {
+      throw new Error('Usuario não existe');
+    }
+
+    await this.empresario.destroy({ where: { id } });
   }
 }

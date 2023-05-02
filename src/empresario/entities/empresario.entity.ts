@@ -1,11 +1,4 @@
-import {
-  Column,
-  DataType,
-  Table,
-  Model,
-  HasMany,
-  HasOne,
-} from 'sequelize-typescript';
+import { Column, DataType, Table, Model, HasMany } from 'sequelize-typescript';
 import { Vaga } from 'src/vaga/entities/vaga.entity';
 
 @Table({ tableName: 'Empresario' })
@@ -24,8 +17,8 @@ export class Empresario extends Model<Empresario> {
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   cnpj: string;
 
-  @Column({ type: DataType.DATE, allowNull: false })
-  data_nascimento: Date;
+  @Column({ type: DataType.DATE, allowNull: true })
+  data_nascimento?: Date;
 
   @Column({
     type: DataType.STRING,
@@ -52,12 +45,12 @@ export class Empresario extends Model<Empresario> {
   @Column({ type: DataType.STRING, allowNull: false })
   rua: string;
 
-  @Column({ type: DataType.INTEGER, allowNull: false })
-  numero: number;
+  @Column({ type: DataType.STRING, allowNull: false })
+  numero: string;
 
   @Column({ type: DataType.INTEGER, allowNull: false })
   cep: number;
 
-  @HasOne((): typeof Vaga => Vaga)
+  @HasMany((): typeof Vaga => Vaga)
   vaga: Vaga;
 }

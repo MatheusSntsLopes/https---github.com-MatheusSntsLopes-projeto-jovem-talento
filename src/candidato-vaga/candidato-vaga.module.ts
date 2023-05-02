@@ -4,6 +4,7 @@ import { CandidatoVagaController } from './candidato-vaga.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { CandidatoVaga } from './entities/candidato-vaga.entity';
 @Module({
+  imports: [SequelizeModule.forFeature([CandidatoVaga])],
   controllers: [CandidatoVagaController],
   providers: [CandidatoVagaService],
 })

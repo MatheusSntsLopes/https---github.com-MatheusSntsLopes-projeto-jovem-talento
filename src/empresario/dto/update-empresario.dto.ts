@@ -21,7 +21,7 @@ export class UpdateEmpresarioDto extends PartialType(CreateEmpresarioDto) {
   cep: number;
 
   @IsNotEmpty()
-  cpf: string;
+  cnpj: string;
 
   @IsNotEmpty()
   numero: string;
@@ -29,10 +29,6 @@ export class UpdateEmpresarioDto extends PartialType(CreateEmpresarioDto) {
   @IsNotEmpty()
   @IsString()
   nome: string;
-
-  @IsDate()
-  @IsNotEmpty()
-  data_nascimento: Date;
 
   @IsNotEmpty()
   @IsEmail()

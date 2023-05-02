@@ -12,11 +12,7 @@ import {
 export class CreateCandidatoDto {
   @MinLength(11)
   @IsNotEmpty()
-  @IsInt()
   telefone: string;
-
-  @IsDate()
-  data_nascimento?: Date;
 
   @IsNotEmpty()
   cep: number;

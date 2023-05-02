@@ -1,34 +1,49 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Put,
+} from '@nestjs/common';
 import { EmpresarioService } from './empresario.service';
 import { CreateEmpresarioDto } from './dto/create-empresario.dto';
 import { UpdateEmpresarioDto } from './dto/update-empresario.dto';
+import { Empresario } from './entities/empresario.entity';
 
 @Controller('empresario')
 export class EmpresarioController {
   constructor(private readonly empresarioService: EmpresarioService) {}
 
   @Post()
-  create(@Body() createEmpresarioDto: CreateEmpresarioDto) {
+  create(
+    @Body() createEmpresarioDto: CreateEmpresarioDto,
+  ): Promise<Empresario> {
     return this.empresarioService.create(createEmpresarioDto);
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<Empresario[]> {
     return this.empresarioService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): Promise<Empresario> {
     return this.empresarioService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEmpresarioDto: UpdateEmpresarioDto) {
+  @Put(':id')
+  update(
+    @Param('id') id: string,
+    @Body() updateEmpresarioDto: UpdateEmpresarioDto,
+  ): Promise<Empresario> {
     return this.empresarioService.update(+id, updateEmpresarioDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: string): Promise<void> {
     return this.empresarioService.remove(+id);
   }
 }

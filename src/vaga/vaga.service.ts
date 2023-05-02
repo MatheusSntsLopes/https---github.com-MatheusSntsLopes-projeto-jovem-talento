@@ -1,26 +1,80 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateVagaDto } from './dto/create-vaga.dto';
 import { UpdateVagaDto } from './dto/update-vaga.dto';
+import { Vaga } from './entities/vaga.entity';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class VagaService {
-  create(createVagaDto: CreateVagaDto) {
-    return 'This action adds a new vaga';
+  constructor(@InjectModel(Vaga) private readonly vaga: typeof Vaga) {}
+
+  async create(vagaDto: CreateVagaDto): Promise<Vaga> {
+    try {
+      const vagaNova = {
+        ...vagaDto,
+      };
+      const vagaCriada: Vaga = await this.vaga.create(vagaNova);
+
+      return vagaCriada;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
-  findAll() {
-    return `This action returns all vaga`;
+  findAll(): Promise<Vaga[]> {
+    return this.vaga.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} vaga`;
+  async findOne(id: number): Promise<Vaga> {
+    const vagaEncontrada: Vaga = await this.vaga.findOne({
+      where: { id },
+    });
+
+    if (!vagaEncontrada) {
+      throw new NotFoundException('Vaga não encontrada');
+    }
+
+    return vagaEncontrada;
   }
 
-  update(id: number, updateVagaDto: UpdateVagaDto) {
-    return `This action updates a #${id} vaga`;
+  async update(
+    id: number,
+    { formacao, experiencia, habilidade, quantidade, salario }: UpdateVagaDto,
+  ): Promise<Vaga> {
+    try {
+      const vagaExiste: Vaga = await this.vaga.findByPk(id, {
+        rejectOnEmpty: true,
+      });
+
+      if (!vagaExiste) {
+        throw new Error('Vaga não existe');
+      }
+
+      const novosDados: Vaga = await vagaExiste.update({
+        formacao,
+        experiencia,
+        habilidade,
+        quantidade,
+        salario,
+      });
+
+      return novosDados;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} vaga`;
+  async remove(id: number) {
+    const vagaExiste: Vaga = await this.vaga.findByPk(id);
+
+    if (!vagaExiste) {
+      throw new Error('Vaga não existe');
+    }
+
+    await this.vaga.destroy({ where: { id } });
   }
 }

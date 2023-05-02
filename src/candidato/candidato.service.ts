@@ -44,6 +44,7 @@ export class CandidatoService {
     const candidatoEncontrado: Candidato = await this.candidato.findOne({
       where: { id },
       attributes: { exclude: ['senha'] },
+      include: Curriculo,
     });
 
     if (!candidatoEncontrado) {
@@ -68,7 +69,7 @@ export class CandidatoService {
       rua,
       telefone,
     }: UpdateCandidatoDto,
-  ) {
+  ): Promise<Candidato> {
     try {
       const candidatoExiste = await this.candidato.findByPk(id, {
         rejectOnEmpty: true,

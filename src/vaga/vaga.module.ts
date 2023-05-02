@@ -5,6 +5,7 @@ import { Vaga } from './entities/vaga.entity';
 import { SequelizeModule } from '@nestjs/sequelize';
 
 @Module({
+  imports: [SequelizeModule.forFeature([Vaga])],
   controllers: [VagaController],
   providers: [VagaService],
 })

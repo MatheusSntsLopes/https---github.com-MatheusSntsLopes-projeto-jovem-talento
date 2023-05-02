@@ -3,7 +3,6 @@ import {
   DataType,
   Table,
   Model,
-  BelongsToMany,
   ForeignKey,
   BelongsTo,
   HasMany,
@@ -21,7 +20,7 @@ export class Vaga extends Model<Vaga> {
   })
   id: number;
 
-  @ForeignKey(() => Empresario)
+  @ForeignKey((): typeof Empresario => Empresario)
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
