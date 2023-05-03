@@ -2,6 +2,7 @@ import { PartialType } from '@nestjs/mapped-types';
 import { CreateEmpresarioDto } from './create-empresario.dto';
 import {
   IsDate,
+  IsDateString,
   IsEmail,
   IsInt,
   IsNotEmpty,
@@ -58,4 +59,8 @@ export class UpdateEmpresarioDto extends PartialType(CreateEmpresarioDto) {
     message: 'password too weak',
   })
   senha: string;
+
+  @IsDateString()
+  @IsNotEmpty()
+  data_nascimento: Date;
 }

@@ -31,13 +31,30 @@ export class CurriculoService {
   }
 
   findAll(): Promise<Curriculo[]> {
-    return this.curriculo.findAll({ include: Candidato });
+    return this.curriculo.findAll({
+      include: {
+        model: Candidato,
+        attributes: [
+          'nome',
+          'telefone',
+          'rua',
+          'estado',
+          'cidade',
+          'cep',
+          'bairro',
+          'numero',
+        ],
+      },
+    });
   }
 
   async findOne(id: number): Promise<Curriculo> {
     const curriculo: Curriculo = await this.curriculo.findOne({
       where: { id },
-      include: Candidato,
+      include: {
+        model: Candidato,
+        attributes: ['nome', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+      },
     });
 
     if (!curriculo) {

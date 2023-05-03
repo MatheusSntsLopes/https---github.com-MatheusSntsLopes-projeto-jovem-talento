@@ -35,7 +35,7 @@ export class CandidatoService {
 
   findAll(): Promise<Candidato[]> {
     return this.candidato.findAll({
-      attributes: { exclude: ['senha'] },
+      attributes: { exclude: ['senha', 'email', 'cpf'] },
       include: Curriculo,
     });
   }
@@ -43,7 +43,7 @@ export class CandidatoService {
   async findOne(id: number): Promise<Candidato> {
     const candidatoEncontrado: Candidato = await this.candidato.findOne({
       where: { id },
-      attributes: { exclude: ['senha'] },
+      attributes: { exclude: ['senha', 'email', 'cpf'] },
       include: Curriculo,
     });
 

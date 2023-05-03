@@ -1,5 +1,6 @@
 import {
   IsDate,
+  IsDateString,
   IsEmail,
   IsInt,
   IsNotEmpty,
@@ -56,4 +57,8 @@ export class CreateCandidatoDto {
     message: 'password too weak',
   })
   senha: string;
+
+  @IsDateString()
+  @IsNotEmpty()
+  data_nascimento: Date;
 }
