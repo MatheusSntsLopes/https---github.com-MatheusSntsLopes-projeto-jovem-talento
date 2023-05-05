@@ -10,6 +10,7 @@ import { CreateCandidatoDto } from './dto/create-candidato.dto';
 import { UpdateCandidatoDto } from './dto/update-candidato.dto';
 import { Candidato } from './entities/candidato.entity';
 import { Curriculo } from 'src/curriculo/entities/curriculo.entity';
+import { where } from 'sequelize';
 
 @Injectable()
 export class CandidatoService {
@@ -106,5 +107,9 @@ export class CandidatoService {
     }
 
     await this.candidato.destroy({ where: { id } });
+  }
+
+  findByEmail(email: string): Promise<Candidato> {
+    return this.candidato.findOne({ where: { email } });
   }
 }

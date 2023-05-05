@@ -13,7 +13,7 @@ import { Curriculo } from './curriculo/entities/curriculo.entity';
 import { Empresario } from './empresario/entities/empresario.entity';
 import { Vaga } from './vaga/entities/vaga.entity';
 import { CandidatoVaga } from './candidato-vaga/entities/candidato-vaga.entity';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -36,7 +36,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     EmpresarioModule,
     VagaModule,
     CandidatoVagaModule,
-    AuthenticationModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
