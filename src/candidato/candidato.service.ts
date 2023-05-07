@@ -20,13 +20,11 @@ export class CandidatoService {
 
   async create(candidatoDto: CreateCandidatoDto): Promise<Candidato> {
     try {
-      const candidatoNovo = {
+      const data = {
         ...candidatoDto,
-        senha: await bcrypt.hash(candidatoDto.senha, 10),
+        password: await bcrypt.hash(candidatoDto.password, 10),
       };
-      const candidatoCriado: Candidato = await this.candidato.create(
-        candidatoNovo,
-      );
+      const candidatoCriado: Candidato = await this.candidato.create(data);
 
       return candidatoCriado;
     } catch (e) {
@@ -36,7 +34,7 @@ export class CandidatoService {
 
   findAll(): Promise<Candidato[]> {
     return this.candidato.findAll({
-      attributes: { exclude: ['senha', 'email', 'cpf'] },
+      attributes: { exclude: ['password', 'email', 'cpf'] },
       include: Curriculo,
     });
   }
@@ -44,7 +42,7 @@ export class CandidatoService {
   async findOne(id: number): Promise<Candidato> {
     const candidatoEncontrado: Candidato = await this.candidato.findOne({
       where: { id },
-      attributes: { exclude: ['senha', 'email', 'cpf'] },
+      attributes: { exclude: ['password', 'email', 'cpf'] },
       include: Curriculo,
     });
 
@@ -59,8 +57,8 @@ export class CandidatoService {
     id: number,
     {
       email,
-      nome,
-      senha,
+      name,
+      password,
       cpf,
       bairro,
       cep,
@@ -82,8 +80,8 @@ export class CandidatoService {
 
       const novosDados = await candidatoExiste.update({
         email,
-        nome,
-        senha,
+        name,
+        password,
         cpf,
         bairro,
         cep,

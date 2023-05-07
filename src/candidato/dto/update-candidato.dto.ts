@@ -30,7 +30,7 @@ export class UpdateCandidatoDto extends PartialType(CreateCandidatoDto) {
 
   @IsNotEmpty()
   @IsString()
-  nome: string;
+  name: string;
 
   @IsNotEmpty()
   @IsEmail()
@@ -59,7 +59,7 @@ export class UpdateCandidatoDto extends PartialType(CreateCandidatoDto) {
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'password too weak',
   })
-  senha: string;
+  password: string;
 
   @IsDateString()
   @IsNotEmpty()

@@ -20,7 +20,7 @@ export class Candidato extends Model<Candidato> {
   id: number;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  nome: string;
+  name: string;
 
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   cpf: string;
@@ -32,7 +32,7 @@ export class Candidato extends Model<Candidato> {
   email: string;
 
   @Column({ type: DataType.STRING, allowNull: false, defaultValue: '' })
-  senha: string;
+  password: string;
 
   @Column({ type: DataType.STRING, allowNull: false, defaultValue: '' })
   telefone: string;
