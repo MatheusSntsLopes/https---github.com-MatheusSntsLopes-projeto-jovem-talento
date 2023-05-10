@@ -14,6 +14,7 @@ import { Empresario } from './empresario/entities/empresario.entity';
 import { Vaga } from './vaga/entities/vaga.entity';
 import { CandidatoVaga } from './candidato-vaga/entities/candidato-vaga.entity';
 import { AuthModule } from './auth/auth.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @Module({
   imports: [
@@ -37,6 +38,8 @@ import { AuthModule } from './auth/auth.module';
     VagaModule,
     CandidatoVagaModule,
     AuthModule,
+    AuthModule,
+    AuthenticationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

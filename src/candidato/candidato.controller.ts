@@ -8,6 +8,7 @@ import {
   Put,
   HttpCode,
   UseGuards,
+  Header,
 } from '@nestjs/common';
 import { CandidatoService } from './candidato.service';
 import { CreateCandidatoDto } from './dto/create-candidato.dto';
@@ -24,7 +25,6 @@ export class CandidatoController {
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
   findAll() {
     return this.candidatoService.findAll();
   }
@@ -34,6 +34,7 @@ export class CandidatoController {
     return this.candidatoService.findOne(+id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   update(
     @Param('id') id: string,
@@ -42,6 +43,7 @@ export class CandidatoController {
     return this.candidatoService.update(+id, updateCandidatoDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @HttpCode(204)
   @Delete(':id')
   remove(@Param('id') id: string) {

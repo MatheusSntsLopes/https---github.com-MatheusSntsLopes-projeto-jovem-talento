@@ -51,8 +51,8 @@ export class CreateCandidatoDto {
 
   @IsNotEmpty()
   @IsString()
-  @MinLength(4)
-  @MaxLength(20)
+  @MinLength(8)
+  @MaxLength(32)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'password too weak',
   })

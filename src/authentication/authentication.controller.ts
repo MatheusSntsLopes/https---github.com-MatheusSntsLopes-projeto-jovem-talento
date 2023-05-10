@@ -6,21 +6,21 @@ import {
   Request,
   UseGuards,
 } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { AuthenticationService } from './authentication.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
-import { AuthRequest } from './models/AuthRequest';
+import { AuthenticationRequest } from './models/AuthenticationRequest';
 import { IsPublic } from './decorators/is-public.decorator';
 import { UserToken } from './models/UserToken';
 
 @Controller('empresario')
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+export class AuthenticationController {
+  constructor(private readonly authService: AuthenticationService) {}
 
   @IsPublic()
   @UseGuards(LocalAuthGuard)
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  async login(@Request() req: AuthRequest): Promise<UserToken> {
+  async login(@Request() req: AuthenticationRequest): Promise<UserToken> {
     return this.authService.login(req.user);
   }
 }

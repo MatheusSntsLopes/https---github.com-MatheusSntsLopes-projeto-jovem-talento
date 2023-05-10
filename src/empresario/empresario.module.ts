@@ -8,5 +8,6 @@ import { Empresario } from './entities/empresario.entity';
   imports: [SequelizeModule.forFeature([Empresario])],
   controllers: [EmpresarioController],
   providers: [EmpresarioService],
+  exports: [EmpresarioService],
 })
 export class EmpresarioModule {}

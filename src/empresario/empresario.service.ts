@@ -19,7 +19,7 @@ export class EmpresarioService {
     try {
       const empresarioNovo = {
         ...empresarioDto,
-        senha: await bcrypt.hash(empresarioDto.senha, 10),
+        senha: await bcrypt.hash(empresarioDto.password, 10),
       };
       const empresarioCriado: Empresario = await this.empresario.create(
         empresarioNovo,
@@ -56,8 +56,8 @@ export class EmpresarioService {
     id: number,
     {
       email,
-      nome,
-      senha,
+      name,
+      password,
       cnpj,
       bairro,
       cep,
@@ -79,8 +79,8 @@ export class EmpresarioService {
 
       const novosDados: Empresario = await empresarioExiste.update({
         email,
-        nome,
-        senha,
+        name,
+        password,
         cnpj,
         bairro,
         cep,
@@ -105,5 +105,9 @@ export class EmpresarioService {
     }
 
     await this.empresario.destroy({ where: { id } });
+  }
+
+  findByEmail(email: string): Promise<Empresario> {
+    return this.empresario.findOne({ where: { email } });
   }
 }

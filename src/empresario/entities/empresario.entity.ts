@@ -12,7 +12,7 @@ export class Empresario extends Model<Empresario> {
   id: number;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  nome: string;
+  name: string;
 
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   cnpj: string;
@@ -28,7 +28,7 @@ export class Empresario extends Model<Empresario> {
   email: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  senha: string;
+  password: string;
 
   @Column({ type: DataType.STRING, allowNull: false })
   telefone: string;
