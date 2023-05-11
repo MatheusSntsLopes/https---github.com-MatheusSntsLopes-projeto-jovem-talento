@@ -7,11 +7,13 @@ import {
   Param,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { EmpresarioService } from './empresario.service';
 import { CreateEmpresarioDto } from './dto/create-empresario.dto';
 import { UpdateEmpresarioDto } from './dto/update-empresario.dto';
 import { Empresario } from './entities/empresario.entity';
+import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
 
 @Controller('empresario')
 export class EmpresarioController {
@@ -34,6 +36,7 @@ export class EmpresarioController {
     return this.empresarioService.findOne(+id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   update(
     @Param('id') id: string,

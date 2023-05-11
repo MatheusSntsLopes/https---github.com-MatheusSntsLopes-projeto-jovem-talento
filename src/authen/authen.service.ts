@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { EmpresarioService } from 'src/empresario/empresario.service';
-import * as bcrypt from 'bcrypt';
-import { Empresario } from 'src/empresario/entities/empresario.entity';
-import { UserPayload } from './models/UserPayload';
 import { JwtService } from '@nestjs/jwt';
-import { UserToken } from './models/UserToken';
+import * as bcrypt from 'bcrypt';
 import { UnauthorizedError } from './errors/unauthorized.error';
+import { Empresario } from '../empresario/entities/empresario.entity';
+import { EmpresarioService } from '../empresario/empresario.service';
+import { UserPayload } from './models/UserPayload';
+import { UserToken } from './models/UserToken';
+
 @Injectable()
-export class AuthenticationService {
+export class AuthenService {
   constructor(
-    private readonly empresarioService: EmpresarioService,
     private readonly jwtService: JwtService,
+    private readonly empresarioService: EmpresarioService,
   ) {}
 
   async login(user: Empresario): Promise<UserToken> {
@@ -34,10 +35,10 @@ export class AuthenticationService {
       if (isPasswordValid) {
         return user;
       }
-    }
 
-    throw new UnauthorizedError(
-      'Email address or password provided is incorrect.',
-    );
+      throw new UnauthorizedError(
+        'Email address or password provided is incorrect.',
+      );
+    }
   }
 }

@@ -1,7 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateCandidatoDto } from './create-candidato.dto';
 import {
-  IsDate,
   IsDateString,
   IsEmail,
   IsInt,

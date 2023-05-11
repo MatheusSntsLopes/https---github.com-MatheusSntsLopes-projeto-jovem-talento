@@ -19,7 +19,7 @@ export class EmpresarioService {
     try {
       const empresarioNovo = {
         ...empresarioDto,
-        senha: await bcrypt.hash(empresarioDto.password, 10),
+        password: await bcrypt.hash(empresarioDto.password, 10),
       };
       const empresarioCriado: Empresario = await this.empresario.create(
         empresarioNovo,
