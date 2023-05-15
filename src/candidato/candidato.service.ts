@@ -33,24 +33,32 @@ export class CandidatoService {
   }
 
   findAll(): Promise<Candidato[]> {
-    return this.candidato.findAll({
-      attributes: { exclude: ['password', 'email', 'cpf'] },
-      include: Curriculo,
-    });
+    try {
+      return this.candidato.findAll({
+        attributes: { exclude: ['password', 'email', 'cpf'] },
+        include: Curriculo,
+      });
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
   async findOne(id: number): Promise<Candidato> {
-    const candidatoEncontrado: Candidato = await this.candidato.findOne({
-      where: { id },
-      attributes: { exclude: ['password', 'email', 'cpf'] },
-      include: Curriculo,
-    });
+    try {
+      const candidatoEncontrado: Candidato = await this.candidato.findOne({
+        where: { id },
+        attributes: { exclude: ['password', 'email', 'cpf'] },
+        include: Curriculo,
+      });
 
-    if (!candidatoEncontrado) {
-      throw new NotFoundException('Candidato não encontrado.');
+      if (!candidatoEncontrado) {
+        throw new NotFoundException('Candidato não encontrado.');
+      }
+
+      return candidatoEncontrado;
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    return candidatoEncontrado;
   }
 
   async update(
@@ -68,9 +76,9 @@ export class CandidatoService {
       rua,
       telefone,
     }: UpdateCandidatoDto,
-  ): Promise<Candidato> {
+  ): Promise<void> {
     try {
-      const candidatoExiste = await this.candidato.findByPk(id, {
+      const candidatoExiste: Candidato = await this.candidato.findByPk(id, {
         rejectOnEmpty: true,
       });
 
@@ -78,7 +86,7 @@ export class CandidatoService {
         throw new Error('Usuario não existe');
       }
 
-      const novosDados = await candidatoExiste.update({
+      await candidatoExiste.update({
         email,
         name,
         password,
@@ -91,20 +99,22 @@ export class CandidatoService {
         rua,
         telefone,
       });
-
-      return novosDados;
     } catch (e) {
       throw new BadRequestException(e.message);
     }
   }
   async remove(id: number) {
-    const candidatoexist: Candidato = await this.candidato.findByPk(id);
+    try {
+      const candidatoexist: Candidato = await this.candidato.findByPk(id);
 
-    if (!candidatoexist) {
-      throw new Error('Usuario não existe');
+      if (!candidatoexist) {
+        throw new Error('Usuario não existe');
+      }
+
+      await this.candidato.destroy({ where: { id } });
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    await this.candidato.destroy({ where: { id } });
   }
 
   findByEmail(email: string): Promise<Candidato> {

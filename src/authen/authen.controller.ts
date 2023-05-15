@@ -19,7 +19,7 @@ export class AuthenController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  async login(@Request() req: AuthRequest) {
+  async login(@Request() req) {
     return this.authService.login(req.user);
   }
 }

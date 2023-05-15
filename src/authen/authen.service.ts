@@ -6,15 +6,18 @@ import { Empresario } from '../empresario/entities/empresario.entity';
 import { EmpresarioService } from '../empresario/empresario.service';
 import { UserPayload } from './models/UserPayload';
 import { UserToken } from './models/UserToken';
+import { Candidato } from 'src/candidato/entities/candidato.entity';
+import { CandidatoService } from 'src/candidato/candidato.service';
 
 @Injectable()
 export class AuthenService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly empresarioService: EmpresarioService,
+    private readonly candidatoService: CandidatoService,
   ) {}
 
-  async login(user: Empresario): Promise<UserToken> {
+  async login(user: Empresario | Candidato): Promise<UserToken> {
     const payload: UserPayload = {
       sub: user.id,
       email: user.email,
@@ -26,8 +29,11 @@ export class AuthenService {
     };
   }
 
-  async validateUser(email: string, password: string): Promise<Empresario> {
-    const user = await this.empresarioService.findByEmail(email);
+  // eslint-disable-next-line prettier/prettier
+  async validateUser(email: string, password: string): Promise<Empresario | Candidato> {
+    const user =
+      (await this.empresarioService.findByEmail(email)) ||
+      (await this.candidatoService.findByEmail(email));
 
     if (user) {
       const isPasswordValid = await bcrypt.compare(password, user.password);

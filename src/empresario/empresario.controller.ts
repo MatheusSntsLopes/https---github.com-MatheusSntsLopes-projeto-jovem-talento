@@ -44,6 +44,7 @@ export class EmpresarioController {
     return this.empresarioService.update(+id, updateEmpresarioDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string): Promise<void> {
     return this.empresarioService.remove(+id);

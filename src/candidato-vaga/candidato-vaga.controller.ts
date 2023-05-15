@@ -7,16 +7,19 @@ import {
   Param,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { CandidatoVagaService } from './candidato-vaga.service';
 import { CreateCandidatoVagaDto } from './dto/create-candidato-vaga.dto';
 import { UpdateCandidatoVagaDto } from './dto/update-candidato-vaga.dto';
 import { CandidatoVaga } from './entities/candidato-vaga.entity';
+import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
 
 @Controller('candidato-vaga')
 export class CandidatoVagaController {
   constructor(private readonly candidatoVagaService: CandidatoVagaService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body() createCandidatoVagaDto: CreateCandidatoVagaDto,
@@ -34,7 +37,8 @@ export class CandidatoVagaController {
     return this.candidatoVagaService.findOne(+id);
   }
 
-  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  @Put(':id')
   update(
     @Param('id') id: string,
     @Body() updateCandidatoVagaDto: UpdateCandidatoVagaDto,
@@ -42,6 +46,7 @@ export class CandidatoVagaController {
     return this.candidatoVagaService.update(+id, updateCandidatoVagaDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.candidatoVagaService.remove(+id);

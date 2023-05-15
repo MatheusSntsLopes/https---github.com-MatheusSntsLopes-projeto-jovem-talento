@@ -3,8 +3,8 @@ import { Empresario } from 'src/empresario/entities/empresario.entity';
 import { AuthRequest } from '../models/AuthRequest';
 
 export const CurrentUser = createParamDecorator(
-  (data: unknown, context: ExecutionContext): Empresario => {
-    const request = context.switchToHttp().getRequest<AuthRequest>();
+  (data: unknown, context: ExecutionContext) => {
+    const request = context.switchToHttp().getRequest();
 
     return request.user;
   },
