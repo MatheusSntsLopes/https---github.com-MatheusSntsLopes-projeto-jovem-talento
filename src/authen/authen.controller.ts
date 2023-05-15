@@ -11,7 +11,7 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 import { AuthRequest } from './models/AuthRequest';
 import { IsPublic } from './decorators/is-public.decorator';
 
-@Controller('emp')
+@Controller()
 export class AuthenController {
   constructor(private readonly authService: AuthenService) {}
 

@@ -13,7 +13,7 @@ import {
 import { CandidatoService } from './candidato.service';
 import { CreateCandidatoDto } from './dto/create-candidato.dto';
 import { UpdateCandidatoDto } from './dto/update-candidato.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
 
 @Controller('candidato')
 export class CandidatoController {
