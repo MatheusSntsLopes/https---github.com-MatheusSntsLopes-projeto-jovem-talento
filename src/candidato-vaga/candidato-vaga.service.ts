@@ -36,7 +36,13 @@ export class CandidatoVagaService {
 
   findAll(): Promise<CandidatoVaga[]> {
     return this.candidatoVaga.findAll({
-      include: [Candidato, Vaga],
+      include: [
+        {
+          model: Candidato,
+          attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+        },
+        Vaga,
+      ],
     });
   }
 
@@ -44,8 +50,13 @@ export class CandidatoVagaService {
     const candidatoVagaEncontrado: CandidatoVaga =
       await this.candidatoVaga.findOne({
         where: { id },
-
-        include: [Candidato, Vaga],
+        include: [
+          {
+            model: Candidato,
+            attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+          },
+          Vaga,
+        ],
       });
 
     if (!candidatoVagaEncontrado) {

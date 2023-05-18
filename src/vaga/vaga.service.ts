@@ -7,6 +7,7 @@ import { CreateVagaDto } from './dto/create-vaga.dto';
 import { UpdateVagaDto } from './dto/update-vaga.dto';
 import { Vaga } from './entities/vaga.entity';
 import { InjectModel } from '@nestjs/sequelize';
+import { Empresario } from 'src/empresario/entities/empresario.entity';
 
 @Injectable()
 export class VagaService {
@@ -32,6 +33,10 @@ export class VagaService {
   async findOne(id: number): Promise<Vaga> {
     const vagaEncontrada: Vaga = await this.vaga.findOne({
       where: { id },
+      include: {
+        model: Empresario,
+        attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+      },
     });
 
     if (!vagaEncontrada) {

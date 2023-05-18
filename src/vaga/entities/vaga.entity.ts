@@ -23,7 +23,7 @@ export class Vaga extends Model<Vaga> {
   @ForeignKey((): typeof Empresario => Empresario)
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: { model: Empresario, key: 'id' },
   })
   empresarioId: number;

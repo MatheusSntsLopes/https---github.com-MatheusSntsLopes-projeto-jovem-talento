@@ -4,7 +4,6 @@ import { CandidatoController } from './candidato.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Candidato } from './entities/candidato.entity';
 import { Curriculo } from 'src/curriculo/entities/curriculo.entity';
-import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [SequelizeModule.forFeature([Candidato]), Curriculo],

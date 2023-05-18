@@ -13,7 +13,6 @@ import { Curriculo } from './curriculo/entities/curriculo.entity';
 import { Empresario } from './empresario/entities/empresario.entity';
 import { Vaga } from './vaga/entities/vaga.entity';
 import { CandidatoVaga } from './candidato-vaga/entities/candidato-vaga.entity';
-import { AuthModule } from './auth/auth.module';
 import { AuthenModule } from './authen/authen.module';
 
 @Module({
@@ -37,8 +36,6 @@ import { AuthenModule } from './authen/authen.module';
     EmpresarioModule,
     VagaModule,
     CandidatoVagaModule,
-    AuthModule,
-    AuthModule,
     AuthenModule,
   ],
   controllers: [AppController],

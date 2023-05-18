@@ -25,8 +25,8 @@ export class Candidato extends Model<Candidato> {
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   cpf: string;
 
-  @Column({ type: DataType.DATE, allowNull: true })
-  data_nascimento?: Date;
+  @Column({ type: DataType.DATE, allowNull: false })
+  data_nascimento: Date;
 
   @Column({ type: DataType.STRING, allowNull: false, unique: true })
   email: string;

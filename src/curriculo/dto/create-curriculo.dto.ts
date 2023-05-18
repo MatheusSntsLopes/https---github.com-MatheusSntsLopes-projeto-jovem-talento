@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MinLength } from 'class-validator';
 export class CreateCurriculoDto {
   @MinLength(20)
   @IsNotEmpty()
@@ -24,4 +24,8 @@ export class CreateCurriculoDto {
   @IsNotEmpty()
   @IsString()
   habilidade: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  candidatoId: number;
 }

@@ -21,7 +21,7 @@ export class Curriculo extends Model<Curriculo> {
   @ForeignKey((): typeof Candidato => Candidato)
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: { model: Candidato, key: 'id' },
   })
   candidatoId: number;

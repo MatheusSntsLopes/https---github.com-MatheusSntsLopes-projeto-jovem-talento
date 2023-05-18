@@ -25,12 +25,12 @@ export class CandidatoVaga extends Model<CandidatoVaga> {
     allowNull: true,
     values: Object.values(STATUS_TIPO),
   })
-  status?: STATUS_TIPO;
+  status: STATUS_TIPO;
 
   @ForeignKey((): typeof Candidato => Candidato)
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: { model: Candidato, key: 'id' },
   })
   candidatoId: number;
@@ -38,7 +38,7 @@ export class CandidatoVaga extends Model<CandidatoVaga> {
   @ForeignKey((): typeof Vaga => Vaga)
   @Column({
     type: DataType.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: { model: Vaga, key: 'id' },
   })
   vagaId: number;

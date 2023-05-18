@@ -35,7 +35,7 @@ export class CurriculoService {
       include: {
         model: Candidato,
         attributes: [
-          'nome',
+          'name',
           'telefone',
           'rua',
           'estado',
@@ -53,7 +53,7 @@ export class CurriculoService {
       where: { id },
       include: {
         model: Candidato,
-        attributes: ['nome', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+        attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
       },
     });
 

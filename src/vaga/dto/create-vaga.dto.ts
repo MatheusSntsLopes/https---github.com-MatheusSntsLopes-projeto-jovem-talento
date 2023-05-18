@@ -19,4 +19,8 @@ export class CreateVagaDto {
   @IsNotEmpty()
   @IsNumber()
   salario: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  empresarioId: number;
 }
