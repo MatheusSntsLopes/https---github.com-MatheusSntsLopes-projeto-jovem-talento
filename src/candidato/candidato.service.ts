@@ -4,13 +4,12 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { sign } from 'jsonwebtoken';
+
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateCandidatoDto } from './dto/create-candidato.dto';
 import { UpdateCandidatoDto } from './dto/update-candidato.dto';
 import { Candidato } from './entities/candidato.entity';
 import { Curriculo } from 'src/curriculo/entities/curriculo.entity';
-import { where } from 'sequelize';
 
 @Injectable()
 export class CandidatoService {

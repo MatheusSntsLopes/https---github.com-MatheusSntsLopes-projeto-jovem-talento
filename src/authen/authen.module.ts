@@ -17,7 +17,7 @@ import { CandidatoModule } from 'src/candidato/candidato.module';
     PassportModule,
     JwtModule.register({
       secret: 'teste',
-      signOptions: { expiresIn: '30d' },
+      signOptions: { expiresIn: '1d' },
     }),
   ],
   controllers: [AuthenController],

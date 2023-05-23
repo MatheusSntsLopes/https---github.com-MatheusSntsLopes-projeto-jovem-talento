@@ -31,37 +31,45 @@ export class CurriculoService {
   }
 
   findAll(): Promise<Curriculo[]> {
-    return this.curriculo.findAll({
-      include: {
-        model: Candidato,
-        attributes: [
-          'name',
-          'telefone',
-          'rua',
-          'estado',
-          'cidade',
-          'cep',
-          'bairro',
-          'numero',
-        ],
-      },
-    });
+    try {
+      return this.curriculo.findAll({
+        include: {
+          model: Candidato,
+          attributes: [
+            'name',
+            'telefone',
+            'rua',
+            'estado',
+            'cidade',
+            'cep',
+            'bairro',
+            'numero',
+          ],
+        },
+      });
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
   async findOne(id: number): Promise<Curriculo> {
-    const curriculo: Curriculo = await this.curriculo.findOne({
-      where: { id },
-      include: {
-        model: Candidato,
-        attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
-      },
-    });
+    try {
+      const curriculo: Curriculo = await this.curriculo.findOne({
+        where: { id },
+        include: {
+          model: Candidato,
+          attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+        },
+      });
 
-    if (!curriculo) {
-      throw new NotFoundException('Curriculo não encontrado.');
+      if (!curriculo) {
+        throw new NotFoundException('Curriculo não encontrado.');
+      }
+
+      return curriculo;
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    return curriculo;
   }
 
   async update(
@@ -75,7 +83,7 @@ export class CurriculoService {
     }: UpdateCurriculoDto,
   ): Promise<Curriculo> {
     try {
-      const curriculoExiste = await this.curriculo.findByPk(id, {
+      const curriculoExiste: Curriculo = await this.curriculo.findByPk(id, {
         rejectOnEmpty: true,
       });
 
@@ -83,7 +91,7 @@ export class CurriculoService {
         throw new Error('Curriculo não existe');
       }
 
-      const novosDados = await curriculoExiste.update({
+      const novosDados: Curriculo = await curriculoExiste.update({
         biografia,
         formacao,
         habilidade,
@@ -98,12 +106,16 @@ export class CurriculoService {
   }
 
   async remove(id: number) {
-    const curriculo = await this.curriculo.findByPk(id);
+    try {
+      const curriculo = await this.curriculo.findByPk(id);
 
-    if (!curriculo) {
-      throw new Error('Usuario não existe');
+      if (!curriculo) {
+        throw new Error('Usuario não existe');
+      }
+
+      await this.curriculo.destroy({ where: { id } });
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    await this.curriculo.destroy({ where: { id } });
   }
 }

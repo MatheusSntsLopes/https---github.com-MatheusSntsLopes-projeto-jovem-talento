@@ -40,7 +40,7 @@ export class EmpresarioController {
   update(
     @Param('id') id: string,
     @Body() updateEmpresarioDto: UpdateEmpresarioDto,
-  ): Promise<Empresario> {
+  ): Promise<void> {
     return this.empresarioService.update(+id, updateEmpresarioDto);
   }
 

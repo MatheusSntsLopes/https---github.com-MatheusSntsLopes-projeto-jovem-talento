@@ -35,21 +35,8 @@ export class CandidatoVagaService {
   }
 
   findAll(): Promise<CandidatoVaga[]> {
-    return this.candidatoVaga.findAll({
-      include: [
-        {
-          model: Candidato,
-          attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
-        },
-        Vaga,
-      ],
-    });
-  }
-
-  async findOne(id: number): Promise<CandidatoVaga> {
-    const candidatoVagaEncontrado: CandidatoVaga =
-      await this.candidatoVaga.findOne({
-        where: { id },
+    try {
+      return this.candidatoVaga.findAll({
         include: [
           {
             model: Candidato,
@@ -58,14 +45,41 @@ export class CandidatoVagaService {
           Vaga,
         ],
       });
-
-    if (!candidatoVagaEncontrado) {
-      throw new NotFoundException('Candidato não encontrado.');
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    return candidatoVagaEncontrado;
   }
 
+  async findOne(id: number): Promise<CandidatoVaga> {
+    try {
+      const candidatoVagaEncontrado: CandidatoVaga =
+        await this.candidatoVaga.findOne({
+          where: { id },
+          include: [
+            {
+              model: Candidato,
+              attributes: [
+                'name',
+                'telefone',
+                'rua',
+                'estado',
+                'cidade',
+                'cep',
+              ],
+            },
+            Vaga,
+          ],
+        });
+
+      if (!candidatoVagaEncontrado) {
+        throw new NotFoundException('Candidato não encontrado.');
+      }
+
+      return candidatoVagaEncontrado;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
+  }
   async update(
     id: number,
     { status }: UpdateCandidatoVagaDto,
@@ -93,12 +107,18 @@ export class CandidatoVagaService {
   }
 
   async remove(id: number) {
-    const candidatoexist: CandidatoVaga = await this.candidatoVaga.findByPk(id);
+    try {
+      const candidatoexist: CandidatoVaga = await this.candidatoVaga.findByPk(
+        id,
+      );
 
-    if (!candidatoexist) {
-      throw new Error('CandidatoVaga não existe');
+      if (!candidatoexist) {
+        throw new Error('CandidatoVaga não existe');
+      }
+
+      await this.candidatoVaga.destroy({ where: { id } });
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    await this.candidatoVaga.destroy({ where: { id } });
   }
 }

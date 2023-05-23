@@ -27,7 +27,21 @@ export class VagaService {
   }
 
   findAll(): Promise<Vaga[]> {
-    return this.vaga.findAll();
+    return this.vaga.findAll({
+      include: {
+        model: Empresario,
+        attributes: [
+          'name',
+          'telefone',
+          'rua',
+          'estado',
+          'cidade',
+          'cep',
+          'cnpj',
+          'bairro',
+        ],
+      },
+    });
   }
 
   async findOne(id: number): Promise<Vaga> {
@@ -35,7 +49,16 @@ export class VagaService {
       where: { id },
       include: {
         model: Empresario,
-        attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+        attributes: [
+          'name',
+          'telefone',
+          'rua',
+          'estado',
+          'cidade',
+          'cep',
+          'cnpj',
+          'bairro',
+        ],
       },
     });
 

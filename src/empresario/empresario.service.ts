@@ -32,16 +32,20 @@ export class EmpresarioService {
   }
 
   findAll(): Promise<Empresario[]> {
-    return this.empresario.findAll({
-      attributes: { exclude: ['senha'] },
-      include: Vaga,
-    });
+    try {
+      return this.empresario.findAll({
+        attributes: { exclude: ['password', 'email'] },
+        include: Vaga,
+      });
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
   }
 
   async findOne(id: number): Promise<Empresario> {
     const empresarioEncontrado: Empresario = await this.empresario.findOne({
       where: { id },
-      attributes: { exclude: ['senha'] },
+      attributes: { exclude: ['password', 'email'] },
       include: Vaga,
     });
 
@@ -67,17 +71,17 @@ export class EmpresarioService {
       rua,
       telefone,
     }: UpdateEmpresarioDto,
-  ): Promise<Empresario> {
+  ): Promise<void> {
     try {
       const empresarioExiste: Empresario = await this.empresario.findByPk(id, {
         rejectOnEmpty: true,
       });
 
       if (!empresarioExiste) {
-        throw new Error('Usuario não existe');
+        throw new Error('Empresario não existe');
       }
 
-      const novosDados: Empresario = await empresarioExiste.update({
+      await empresarioExiste.update({
         email,
         name,
         password,
@@ -90,21 +94,23 @@ export class EmpresarioService {
         rua,
         telefone,
       });
-
-      return novosDados;
     } catch (e) {
       throw new BadRequestException(e.message);
     }
   }
 
   async remove(id: number) {
-    const empresarioexist: Empresario = await this.empresario.findByPk(id);
+    try {
+      const empresarioexist: Empresario = await this.empresario.findByPk(id);
 
-    if (!empresarioexist) {
-      throw new Error('Usuario não existe');
+      if (!empresarioexist) {
+        throw new Error('Usuario não existe');
+      }
+
+      await this.empresario.destroy({ where: { id } });
+    } catch (e) {
+      throw new BadRequestException(e.message);
     }
-
-    await this.empresario.destroy({ where: { id } });
   }
 
   findByEmail(email: string): Promise<Empresario> {
