@@ -121,4 +121,21 @@ export class CandidatoVagaService {
       throw new BadRequestException(e.message);
     }
   }
+
+  async findCandidato(vagaId: number): Promise<CandidatoVaga> {
+    try {
+      const vagaCandidato: CandidatoVaga = await this.candidatoVaga.findOne({
+        where: { vagaId },
+        include: [
+          {
+            model: Candidato,
+            attributes: ['name'],
+          },
+        ],
+      });
+      return vagaCandidato;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
+  }
 }

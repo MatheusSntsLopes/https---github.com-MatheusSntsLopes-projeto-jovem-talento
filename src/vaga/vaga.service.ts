@@ -8,6 +8,7 @@ import { UpdateVagaDto } from './dto/update-vaga.dto';
 import { Vaga } from './entities/vaga.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { Empresario } from 'src/empresario/entities/empresario.entity';
+import { Candidato } from 'src/candidato/entities/candidato.entity';
 
 @Injectable()
 export class VagaService {

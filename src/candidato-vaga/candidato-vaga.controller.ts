@@ -51,4 +51,9 @@ export class CandidatoVagaController {
   remove(@Param('id') id: string) {
     return this.candidatoVagaService.remove(+id);
   }
+
+  @Get('vaga/:vagaId')
+  findCandidato(@Param('vagaId') vagaId: string): Promise<CandidatoVaga> {
+    return this.candidatoVagaService.findCandidato(+vagaId);
+  }
 }
