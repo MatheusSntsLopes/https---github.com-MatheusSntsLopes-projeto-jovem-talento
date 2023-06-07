@@ -1,5 +1,3 @@
-//const { event } = require('jquery');
-
 (function () {
   'use strict';
 
@@ -160,33 +158,3 @@
 
   new PureCounter();
 })();
-
-function efetuarLogin() {
-  event.preventDefault();
-  /* $.ajax({
-    method: 'POST',
-    url: 'http://localhost:3000/login',
-    data: JSON.stringify({ email: email.value, password: password.value }),
-    contentType: 'json',
-    dataType: 'json',
-    success: (dados) => {
-      console.log(dados);
-      alert(dados);
-    },
-    error: (jqXHR, textStatus) => {
-      alert('Houve um erro processando sua requisição.');
-    },
-  }); */
-
-  axios
-    .post('http://localhost:3000/login', {
-      email: email.value,
-      password: password.value,
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}

@@ -1,11 +1,11 @@
 const urlUF = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
 const cidade = document.getElementById("cidade")
-const uf = document.getElementById("uf");
+const estado = document.getElementById("estado");
 
-uf.addEventListener("change", async function () {
+estado.addEventListener("change", async function () {
   const urlCidades =
     "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" +
-    uf.value +
+    estado.value +
     "/municipios";
   const request = await fetch(urlCidades);
   const response = await request.json();
@@ -22,9 +22,9 @@ window.addEventListener("load", async () => {
 
   const options = document.createElement("optgroup");
   options.setAttribute("label", "UFs");
-  response.forEach(function (uf) {
-    options.innerHTML += "<option>" + uf.sigla + "</option>";
+  response.forEach(function (estado) {
+    options.innerHTML += "<option>" + estado.sigla + "</option>";
   });
 
-  uf.append(options);
+  estado.append(options);
 });

@@ -1,6 +1,14 @@
 # compiled output
 /dist
 /node_modules
+.env
+.prettierrc
+docker-compose.yml
+nest-cli.json
+package-lock.json
+package.json
+tsconfig.build.json
+tsconfig.json
 
 # Logs
 logs
