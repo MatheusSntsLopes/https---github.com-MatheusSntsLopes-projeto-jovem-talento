@@ -11,7 +11,7 @@ import {
 } from 'class-validator';
 
 export class CreateEmpresarioDto {
-  @MinLength(11)
+  @MinLength(10)
   @IsNotEmpty()
   telefone: string;
 

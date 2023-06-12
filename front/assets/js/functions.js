@@ -51,3 +51,14 @@ function efetuarCadastro() {
             console.error(error);
         });
 }
+
+function confereSenha() {
+  const password = document.querySelector('input[id=password]');
+  const confirm = document.querySelector('input[id=confirm]');
+
+  if (confirm.value === password.value) {
+    confirm.setCustomValidity('');
+  } else {
+    confirm.setCustomValidity('As senhas não conferem');
+  }
+}

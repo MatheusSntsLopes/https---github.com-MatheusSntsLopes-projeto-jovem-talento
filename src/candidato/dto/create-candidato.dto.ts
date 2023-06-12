@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 
 export class CreateCandidatoDto {
-  @MinLength(11)
+  @MinLength(10)
   @IsNotEmpty()
   telefone: string;
 
