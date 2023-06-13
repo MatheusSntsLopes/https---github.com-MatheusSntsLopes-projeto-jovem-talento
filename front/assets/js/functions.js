@@ -46,6 +46,8 @@ function efetuarCadastro() {
         .post(url, dados)
         .then(function (response) {
             console.log(response);
+            alert('Cadastro efetusado com sucesso!')
+            location.href = ('../index.html')
         })
         .catch(function (error) {
             console.error(error);
