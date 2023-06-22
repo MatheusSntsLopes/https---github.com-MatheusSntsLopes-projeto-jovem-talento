@@ -1,6 +1,7 @@
 import { Model } from 'sequelize-typescript';
 import { CandidatoVaga } from 'src/candidato-vaga/entities/candidato-vaga.entity';
 import { Curriculo } from 'src/curriculo/entities/curriculo.entity';
+import { Tipo } from '../constants/Tipo';
 export declare class Candidato extends Model<Candidato> {
     id: number;
     name: string;
@@ -10,6 +11,7 @@ export declare class Candidato extends Model<Candidato> {
     password: string;
     telefone: string;
     estado: string;
+    tipo: Tipo;
     cidade: string;
     bairro: string;
     rua: string;

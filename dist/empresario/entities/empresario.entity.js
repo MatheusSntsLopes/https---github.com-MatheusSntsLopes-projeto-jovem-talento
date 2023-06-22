@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Empresario = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const vaga_entity_1 = require("../../vaga/entities/vaga.entity");
+const Tipo_1 = require("../constants/Tipo");
 let Empresario = class Empresario extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -35,6 +36,15 @@ __decorate([
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.DATE, allowNull: true }),
     __metadata("design:type", Date)
 ], Empresario.prototype, "data_nascimento", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.ENUM,
+        allowNull: true,
+        values: Object.values(Tipo_1.Tipo),
+        defaultValue: Tipo_1.Tipo.EMPRESARIO,
+    }),
+    __metadata("design:type", String)
+], Empresario.prototype, "tipo", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,

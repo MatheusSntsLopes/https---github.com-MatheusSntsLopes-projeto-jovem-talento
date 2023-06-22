@@ -27,12 +27,14 @@ let AuthenService = class AuthenService {
             sub: user.id,
             email: user.email,
             name: user.name,
+            tipo: user.tipo,
         };
         return {
             access_token: this.jwtService.sign(payload),
             email: user.email,
             id: user.id,
             name: user.name,
+            tipo: user.tipo,
         };
     }
     async validateUser(email, password) {

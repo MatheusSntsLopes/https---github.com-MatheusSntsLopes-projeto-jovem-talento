@@ -13,6 +13,7 @@ exports.Candidato = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const candidato_vaga_entity_1 = require("../../candidato-vaga/entities/candidato-vaga.entity");
 const curriculo_entity_1 = require("../../curriculo/entities/curriculo.entity");
+const Tipo_1 = require("../constants/Tipo");
 let Candidato = class Candidato extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -52,6 +53,15 @@ __decorate([
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false, defaultValue: '' }),
     __metadata("design:type", String)
 ], Candidato.prototype, "estado", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.ENUM,
+        allowNull: true,
+        values: Object.values(Tipo_1.Tipo),
+        defaultValue: Tipo_1.Tipo.CANDIDATO,
+    }),
+    __metadata("design:type", String)
+], Candidato.prototype, "tipo", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false, defaultValue: '' }),
     __metadata("design:type", String)
