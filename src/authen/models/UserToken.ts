@@ -3,4 +3,5 @@ export interface UserToken {
   email: string;
   id: number;
   name: string;
+  tipo: string;
 }

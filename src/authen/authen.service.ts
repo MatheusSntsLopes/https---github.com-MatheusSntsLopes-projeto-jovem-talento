@@ -22,6 +22,7 @@ export class AuthenService {
       sub: user.id,
       email: user.email,
       name: user.name,
+      tipo: user.tipo,
     };
 
     return {
@@ -29,17 +30,21 @@ export class AuthenService {
       email: user.email,
       id: user.id,
       name: user.name,
+      tipo: user.tipo,
     };
   }
 
   // eslint-disable-next-line prettier/prettier
   async validateUser(email: string, password: string): Promise<Empresario | Candidato> {
-    const user =
+    const user: Empresario | Candidato =
       (await this.empresarioService.findByEmail(email)) ||
       (await this.candidatoService.findByEmail(email));
 
     if (user) {
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      const isPasswordValid: boolean = await bcrypt.compare(
+        password,
+        user.password,
+      );
 
       if (isPasswordValid) {
         return user;

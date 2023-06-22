@@ -10,6 +10,7 @@ import {
 import { AuthenService } from './authen.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { IsPublic } from './decorators/is-public.decorator';
+import { UserToken } from './models/UserToken';
 
 @Controller()
 export class AuthenController {
@@ -19,7 +20,7 @@ export class AuthenController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   @HttpCode(HttpStatus.OK)
-  async login(@Request() req) {
+  async login(@Request() req: any): Promise<UserToken> {
     return this.authService.login(req.user);
   }
 }

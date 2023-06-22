@@ -1,5 +1,6 @@
 import { Column, DataType, Table, Model, HasMany } from 'sequelize-typescript';
 import { Vaga } from 'src/vaga/entities/vaga.entity';
+import { Tipo } from '../constants/Tipo';
 
 @Table({ tableName: 'Empresario' })
 export class Empresario extends Model<Empresario> {
@@ -19,6 +20,14 @@ export class Empresario extends Model<Empresario> {
 
   @Column({ type: DataType.DATE, allowNull: true })
   data_nascimento?: Date;
+
+  @Column({
+    type: DataType.ENUM,
+    allowNull: true,
+    values: Object.values(Tipo),
+    defaultValue: Tipo.EMPRESARIO,
+  })
+  tipo: Tipo;
 
   @Column({
     type: DataType.STRING,

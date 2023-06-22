@@ -8,6 +8,7 @@ import {
 } from 'sequelize-typescript';
 import { CandidatoVaga } from 'src/candidato-vaga/entities/candidato-vaga.entity';
 import { Curriculo } from 'src/curriculo/entities/curriculo.entity';
+import { Tipo } from '../constants/Tipo';
 
 @Table({ tableName: 'Candidato' })
 export class Candidato extends Model<Candidato> {
@@ -39,6 +40,14 @@ export class Candidato extends Model<Candidato> {
 
   @Column({ type: DataType.STRING, allowNull: false, defaultValue: '' })
   estado: string;
+
+  @Column({
+    type: DataType.ENUM,
+    allowNull: true,
+    values: Object.values(Tipo),
+    defaultValue: Tipo.CANDIDATO,
+  })
+  tipo: Tipo;
 
   @Column({ type: DataType.STRING, allowNull: false, defaultValue: '' })
   cidade: string;
