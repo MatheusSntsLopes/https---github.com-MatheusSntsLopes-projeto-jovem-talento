@@ -12,9 +12,9 @@ function efetuarLogin() {
       console.log(response.data);
       localStorage.setItem("usuarioLogado", JSON.stringify(response.data));
       if (response.data.tipo === "EMPRESARIO") {
-        location.assign("../front/pages/empresario.html")
+        location.assign("../front/pages/ambienteEmpresario.html")
       } else {
-        location.assign("../front/pages/candidato.html")
+        location.assign("../front/pages/ambienteCandidato.html")
       }
       
     })
@@ -107,7 +107,7 @@ function cadastrarCurriculo() {
     .then(function (response) {
       console.log(response);
       alert('Currículo cadastrado com sucesso!')
-      location.href = ('../front/pages/candidato.html')
+      location.href = ('../front/pages/ambienteCandidato.html')
     })
     .catch(function (error) {
       console.error(error);

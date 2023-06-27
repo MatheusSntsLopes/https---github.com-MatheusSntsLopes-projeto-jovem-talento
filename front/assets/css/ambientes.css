@@ -1,4 +1,4 @@
-#divisão {
+#navPessoa {
     width: 100%;
     position: relative;
     background-size: cover;
@@ -6,24 +6,24 @@
   }
   
   @media (max-width: 991px) {
-    #divisão {
+    #navPessoa {
       padding: 140px 0 60px 0;
     }
   }
   
   @media (max-width: 574px) {
-    #divisão {
+    #navPessoa {
       padding: 100px 0 20px 0;
     }
   }
   
-  #divisão {
+  #navPessoa {
     width: 35%;
     margin-left: 3%;
   }
   
   @media (max-width: 991px) {
-    #divisão {
+    #navPessoa {
       width: 70%;
       float: none;
       margin: auto;
@@ -32,13 +32,13 @@
   }
   
   @media (max-width: 767px) {
-    #divisão {
+    #navPessoa {
       width: 80%;
     }
   }
   
   @media (max-width: 600px) {
-    #divisão {
+    #navPessoa {
       width: 80%;
     }
   }

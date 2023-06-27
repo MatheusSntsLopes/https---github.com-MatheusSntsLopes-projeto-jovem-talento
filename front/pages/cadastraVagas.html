@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Vagas</title>
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/front/assets/css/style.css" rel="stylesheet">
+    <link href="/front/assets/css/ambientes.css" rel="stylesheet">
+    <link href="/front/assets/img/favicon.png" rel="icon"> 
+</head>
+<body>
+    
+    <section class="vh-100">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+
+                    <div class="card-body p-md-5">
+
+                        <form onsubmit="cadastrarVaga()">
+                            <div class="row row-eq-height justify-content-center">
+
+                                <div class="row justify-content-center">
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Cadastrar vaga</p>
+                                </div>
+
+                                <div class="col-lg-4 mb-4">                       
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="cargo">Cargo</label>
+                                            <input type="text" id="cargo" class="form-control" required />
+                                        </div>
+                                    </div>
+
+                                    
+                                    Nome da Empresa
+                                    <br>
+                                    CNPJ da Empresa
+                                    <br>
+                                    Seu nome completo
+                                    
+
+                                    <div class="d-flex flex-row align-items-center mt-4 mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="emailCorporativo">Seu e-mail corporativo</label>
+                                            <input type="email" id="emailCorporativo" class="form-control" required />
+                                        </div>
+                                    </div>
+
+                                    Seu telefone fixo
+                                    <br>
+                                    Seu celular
+
+                                </div>
+
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Cadastrar vaga agora!</button>
+                                    <br>
+                                </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <script src="/front/assets/js/theme.js"></script>
+
+    <script src="/node_modules/aos/dist/aos.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/swiper/swiper-bundle.js"></script>
+    <script src="/node_modules/axios/dist/axios.js"></script>
+    <script src="/front/assets/js/main.js"></script>
+    <script src="/front/assets/js/functions.js"></script>
+
+</body>
+</html>
