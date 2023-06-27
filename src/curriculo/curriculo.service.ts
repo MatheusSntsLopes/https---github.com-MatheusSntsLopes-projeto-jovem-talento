@@ -58,7 +58,16 @@ export class CurriculoService {
         where: { id },
         include: {
           model: Candidato,
-          attributes: ['name', 'telefone', 'rua', 'estado', 'cidade', 'cep'],
+          attributes: [
+            'name',
+            'telefone',
+            'rua',
+            'estado',
+            'cidade',
+            'cep',
+            'data_nascimento',
+            'cpf',
+          ],
         },
       });
 
