@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo</title>
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/front/assets/css/style.css" rel="stylesheet">
+    <link href="/front/assets/css/ambientes.css" rel="stylesheet">
+    <link href="/front/assets/img/favicon.png" rel="icon">
+
+</head>
+
+<body>
+
+    <section class="vh-100">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+
+                    <div class="card-body p-md-5">
+
+                        <form onsubmit="cadastrarCurriculo()">
+                            <div class="row row-eq-height justify-content-center">
+
+                                <div class="row justify-content-center">
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Cadastrar currículo</p>
+                                </div>
+
+                                <div class="col-lg-4 mb-4">                       
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="biografia">Biografia</label>
+                                            <input type="text" id="biografia" class="form-control" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="formacao">Formação</label>
+                                            <input type="text" id="formacao" class="form-control" required />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="experiencia">Experiências</label>
+                                        <input type="text" id="experiencia" class="form-control" required />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="habilidade">Habilidades</label>
+                                        <input type="text" id="habilidade" class="form-control" required />
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <label class="form-label" for="competencia">Competências</label>
+                                        <input type="text" id="competencia" class="form-control" required />
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                                    <br>
+                                    <a class="small" href="/front/index.html" style="color: black">Já possui
+                                        conta?</a>
+                                </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <script src="/front/assets/js/theme.js"></script>
+
+    <script src="/node_modules/aos/dist/aos.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/swiper/swiper-bundle.js"></script>
+    <script src="/node_modules/axios/dist/axios.js"></script>
+    <script src="/front/assets/js/main.js"></script>
+    <script src="/front/assets/js/functions.js"></script>
+
+</body>
+
+</html>

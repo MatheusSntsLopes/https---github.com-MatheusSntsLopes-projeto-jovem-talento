@@ -1,3 +1,5 @@
+//const { data } = require("jquery");
+
 function efetuarLogin() {
   event.preventDefault();
 
@@ -7,11 +9,25 @@ function efetuarLogin() {
       password: password.value,
     })
     .then(function (response) {
-      console.log(response);
+      console.log(response.data);
+      localStorage.setItem("usuarioLogado", JSON.stringify(response.data));
+      if (response.data.tipo === "EMPRESARIO") {
+        location.assign("../front/pages/empresario.html")
+      } else {
+        location.assign("../front/pages/candidato.html")
+      }
+      
     })
     .catch(function (error) {
       console.error(error);
     });
+}
+
+function efetuarLogout() {
+  event.preventDefault();
+  
+  localStorage.removeItem ("usuarioLogado");
+  location.assign("../index.html");
 }
 
 function efetuarCadastro() {
@@ -46,7 +62,7 @@ function efetuarCadastro() {
     .post(url, dados)
     .then(function (response) {
       console.log(response);
-      alert('Cadastro efetusado com sucesso!')
+      alert('Cadastro efetuado com sucesso!')
       location.href = ('../index.html')
     })
     .catch(function (error) {
@@ -63,4 +79,37 @@ function confereSenha() {
   } else {
     confirm.setCustomValidity('As senhas não conferem');
   }
+}
+
+function cadastrarCurriculo() {
+  event.preventDefault();
+
+  console.log("cadastrarCurriculo")
+
+  let url = 'http://localhost:3000/curriculo';
+
+  let dados = {
+    candidatoId: usuarioLogado.id,
+    biografia: biografia.value,
+    formacao: formacao.value,
+    experiencia: experiencia.value,
+    habilidade: habilidade.value,
+    competencia: competencia.value,
+  }
+
+  axios
+    .post(url, dados, {
+      headers: {
+        "access_token": `${usuarioLogado.access_token}`
+      }
+    })
+
+    .then(function (response) {
+      console.log(response);
+      alert('Currículo cadastrado com sucesso!')
+      location.href = ('../front/pages/candidato.html')
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 }

@@ -2,59 +2,115 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Espaço candidato</title>
+  <title>Espaço candidato</title>
 
-    <script src="/node_modules/jquery/dist/jquery.js"></script>
-    <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="/front/assets/css/style.css" rel="stylesheet">
-    <link href="/front/assets/css/ambientes.css" rel="stylesheet">
-    <link href="/front/assets/img/favicon.png" rel="icon">
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/front/assets/css/style.css" rel="stylesheet">
+  <link href="/front/assets/css/ambientes.css" rel="stylesheet">
+  <link href="/front/assets/img/favicon.png" rel="icon">
 </head>
 
 <body>
 
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex justify-content-between">
-
-      <div class="logo">
-        <h1>Espaço candidato</h1>
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="#">Voltar</a></li>
-          <li><a class="nav-link scrollto" href="/front/index.html">Sair</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-
-    </div>
-  </header>
-  
   <section id="divisão" class="">
-    
+
     <div class="container">
-          <div class="d-grid">
-            <a href="#" class="btn btn-lg btn-dark text-uppercase mb-2" style="color:white">Meus dados</a>
-            <a href="#" class="btn btn-lg btn-dark text-uppercase mb-2" style="color:white">Lista de vagas disponíveis</a>
-            <a href="#" class="btn btn-lg btn-secondary text-uppercase mb-2" style="color:white">Mais informações</a>
+
+      <div class="d-grid">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-lg btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Cadastrar Currículo</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Todas as vagas salvas</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar alterações</button>
+              </div>
+            </div>
           </div>
-    </div>
+        </div>
+
+        <div class="d-grid">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-lg btn-dark mt-3" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Lista de vagas disponíveis</button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar uma vaga</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="button" class="btn btn-primary">Salvar alterações</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-lg btn-secondary mt-3" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">Mais informações</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de todos os candidatos inscritos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar alterações</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <a href="#" class="btn btn-lg btn-dark text-uppercase mb-2" style="color:white">Minhas vagas</a>
+            <a href="#" class="btn btn-lg btn-dark text-uppercase mb-2" style="color:white">Cadastrar vagas</a>
+            <a href="#" class="btn btn-lg btn-dark text-uppercase mb-2" style="color:white">Listar candidatos</a> -->
+          </div>
+        </div>
   </section>
 
-    <!-- Basic footer -->
-    <script src="/front/assets/js/theme.js"></script>
+  <!-- Basic footer -->
+  <script src="/front/assets/js/theme.js"></script>
 
-    <script src="/node_modules/aos/dist/aos.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="/node_modules/swiper/swiper-bundle.js"></script>
-    <script src="/front/assets/js/main.js"></script>
+  <script src="/node_modules/aos/dist/aos.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="/node_modules/swiper/swiper-bundle.js"></script>
+  <script src="/front/assets/js/main.js"></script>
+  <script src="/front/assets/js/functions.js"></script>
 
 </body>
 

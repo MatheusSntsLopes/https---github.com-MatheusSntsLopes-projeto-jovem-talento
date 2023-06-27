@@ -19,7 +19,6 @@
   
   #divisão {
     width: 35%;
-    float: left;
     margin-left: 3%;
   }
   
@@ -44,7 +43,7 @@
     }
   }
 
-  #dropdownMenuButton {
+  #meuPerfil {
     border: none;
     width: 100%;
     height: 100%;

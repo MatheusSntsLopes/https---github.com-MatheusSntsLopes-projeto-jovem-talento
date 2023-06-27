@@ -1,0 +1,28 @@
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+        <div class="logo">
+            <h1 id="tipoUsuario"></h1>
+        </div>
+
+        <div class="dropdown">
+            <button class="bi bi-person-circle" type="button" id="meuPerfil" data-bs-toggle="dropdown"> Olá,
+                Usuario</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#" onclick="efetuarLogout()">Sair</a>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<script>
+    usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    if (usuarioLogado.tipo === "EMPRESARIO") {
+        tipoUsuario.innerHTML = "Espaço Empresário";
+    } else {
+        tipoUsuario.innerHTML = "Espaço Candidato";
+    }
+
+    meuPerfil.innerHTML = ("  Olá, " + usuarioLogado.name);
+</script>
