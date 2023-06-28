@@ -14,7 +14,9 @@ import { CreateCandidatoVagaDto } from './dto/create-candidato-vaga.dto';
 import { UpdateCandidatoVagaDto } from './dto/update-candidato-vaga.dto';
 import { CandidatoVaga } from './entities/candidato-vaga.entity';
 import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('candidato-vaga')
 @Controller('candidato-vaga')
 export class CandidatoVagaController {
   constructor(private readonly candidatoVagaService: CandidatoVagaService) {}

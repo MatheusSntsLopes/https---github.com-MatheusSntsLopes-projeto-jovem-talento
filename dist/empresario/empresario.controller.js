@@ -18,6 +18,7 @@ const empresario_service_1 = require("./empresario.service");
 const create_empresario_dto_1 = require("./dto/create-empresario.dto");
 const update_empresario_dto_1 = require("./dto/update-empresario.dto");
 const jwt_auth_guard_1 = require("../authen/guards/jwt-auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let EmpresarioController = class EmpresarioController {
     constructor(empresarioService) {
         this.empresarioService = empresarioService;
@@ -76,6 +77,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], EmpresarioController.prototype, "remove", null);
 EmpresarioController = __decorate([
+    (0, swagger_1.ApiTags)('empresario'),
     (0, common_1.Controller)('empresario'),
     __metadata("design:paramtypes", [empresario_service_1.EmpresarioService])
 ], EmpresarioController);

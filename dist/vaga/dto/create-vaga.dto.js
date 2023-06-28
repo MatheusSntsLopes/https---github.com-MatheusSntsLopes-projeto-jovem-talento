@@ -10,30 +10,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateVagaDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateVagaDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateVagaDto.prototype, "formacao", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateVagaDto.prototype, "experiencia", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateVagaDto.prototype, "habilidade", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], CreateVagaDto.prototype, "quantidade", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: '1300.23',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)

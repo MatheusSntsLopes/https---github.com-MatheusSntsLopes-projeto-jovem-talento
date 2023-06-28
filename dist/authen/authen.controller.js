@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const authen_service_1 = require("./authen.service");
 const local_auth_guard_1 = require("./guards/local-auth.guard");
 const is_public_decorator_1 = require("./decorators/is-public.decorator");
+const swagger_1 = require("@nestjs/swagger");
 let AuthenController = class AuthenController {
     constructor(authService) {
         this.authService = authService;
@@ -36,6 +37,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthenController.prototype, "login", null);
 AuthenController = __decorate([
+    (0, swagger_1.ApiTags)('login'),
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [authen_service_1.AuthenService])
 ], AuthenController);

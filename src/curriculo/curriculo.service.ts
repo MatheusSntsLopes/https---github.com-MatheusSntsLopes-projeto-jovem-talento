@@ -20,10 +20,13 @@ export class CurriculoService {
       const curriculoNovo = {
         ...createCurriculoDto,
       };
+
       const curriculoCriado: Curriculo = await this.curriculo.create(
         curriculoNovo,
       );
-
+      if (curriculoCriado) {
+        throw new BadRequestException('Candidato ja cadastrou curriculo');
+      }
       return curriculoCriado;
     } catch (e) {
       throw new BadRequestException(e.message);

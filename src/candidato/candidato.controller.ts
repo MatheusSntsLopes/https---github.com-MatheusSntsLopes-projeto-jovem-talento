@@ -14,7 +14,9 @@ import { CandidatoService } from './candidato.service';
 import { CreateCandidatoDto } from './dto/create-candidato.dto';
 import { UpdateCandidatoDto } from './dto/update-candidato.dto';
 import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('candidato')
 @Controller('candidato')
 export class CandidatoController {
   constructor(private readonly candidatoService: CandidatoService) {}

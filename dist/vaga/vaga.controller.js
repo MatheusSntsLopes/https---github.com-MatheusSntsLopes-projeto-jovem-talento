@@ -18,6 +18,7 @@ const vaga_service_1 = require("./vaga.service");
 const create_vaga_dto_1 = require("./dto/create-vaga.dto");
 const update_vaga_dto_1 = require("./dto/update-vaga.dto");
 const jwt_auth_guard_1 = require("../authen/guards/jwt-auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let VagaController = class VagaController {
     constructor(vagaService) {
         this.vagaService = vagaService;
@@ -77,6 +78,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], VagaController.prototype, "remove", null);
 VagaController = __decorate([
+    (0, swagger_1.ApiTags)('vaga'),
     (0, common_1.Controller)('vaga'),
     __metadata("design:paramtypes", [vaga_service_1.VagaService])
 ], VagaController);
