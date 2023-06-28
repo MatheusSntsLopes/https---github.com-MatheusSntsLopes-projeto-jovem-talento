@@ -18,6 +18,7 @@ const candidato_vaga_service_1 = require("./candidato-vaga.service");
 const create_candidato_vaga_dto_1 = require("./dto/create-candidato-vaga.dto");
 const update_candidato_vaga_dto_1 = require("./dto/update-candidato-vaga.dto");
 const jwt_auth_guard_1 = require("../authen/guards/jwt-auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let CandidatoVagaController = class CandidatoVagaController {
     constructor(candidatoVagaService) {
         this.candidatoVagaService = candidatoVagaService;
@@ -87,6 +88,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CandidatoVagaController.prototype, "findCandidato", null);
 CandidatoVagaController = __decorate([
+    (0, swagger_1.ApiTags)('candidato-vaga'),
     (0, common_1.Controller)('candidato-vaga'),
     __metadata("design:paramtypes", [candidato_vaga_service_1.CandidatoVagaService])
 ], CandidatoVagaController);

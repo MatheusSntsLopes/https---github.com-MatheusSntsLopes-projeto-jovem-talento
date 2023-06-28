@@ -28,7 +28,11 @@
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^9.0.2",
+<<<<<<< HEAD
     "@popperjs/core": "^2.11.8",
+=======
+    "@nestjs/swagger": "^7.0.10",
+>>>>>>> ae3182c5a5cefb4ebedaecf33e60749e20fd2bb8
     "@srexi/purecounterjs": "^1.5.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",

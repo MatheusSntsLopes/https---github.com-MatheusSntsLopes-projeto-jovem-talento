@@ -13,32 +13,58 @@ exports.UpdateVagaDto = void 0;
 const mapped_types_1 = require("@nestjs/mapped-types");
 const create_vaga_dto_1 = require("./create-vaga.dto");
 const class_validator_1 = require("class-validator");
+const swagger_1 = require("@nestjs/swagger");
 class UpdateVagaDto extends (0, mapped_types_1.PartialType)(create_vaga_dto_1.CreateVagaDto) {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateVagaDto.prototype, "formacao", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateVagaDto.prototype, "experiencia", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateVagaDto.prototype, "habilidade", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsInt)(),
     __metadata("design:type", Number)
 ], UpdateVagaDto.prototype, "quantidade", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: '1300.23',
+        description: `Serve para descrever a vaga.`,
+    }),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], UpdateVagaDto.prototype, "salario", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
+], UpdateVagaDto.prototype, "empresarioId", void 0);
 exports.UpdateVagaDto = UpdateVagaDto;
 //# sourceMappingURL=update-vaga.dto.js.map

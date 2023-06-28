@@ -25,6 +25,9 @@ let CurriculoService = class CurriculoService {
         try {
             const curriculoNovo = Object.assign({}, createCurriculoDto);
             const curriculoCriado = await this.curriculo.create(curriculoNovo);
+            if (curriculoCriado) {
+                throw new common_1.BadRequestException('Candidato ja cadastrou curriculo');
+            }
             return curriculoCriado;
         }
         catch (e) {

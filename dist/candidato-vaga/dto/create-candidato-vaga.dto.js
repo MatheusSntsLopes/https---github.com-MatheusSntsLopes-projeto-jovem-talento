@@ -12,9 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCandidatoVagaDto = void 0;
 const class_validator_1 = require("class-validator");
 const Status_tipo_1 = require("../constants/Status.tipo");
+const swagger_1 = require("@nestjs/swagger");
 class CreateCandidatoVagaDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'INDEFERIDO,INTERESSADO,SELECIONADO, PARA_ENTREVISTA,DEFERIDO,ANALISE',
+        description: `Defina um status para o tipo`,
+    }),
     (0, class_validator_1.IsEnum)(Status_tipo_1.STATUS_TIPO),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)

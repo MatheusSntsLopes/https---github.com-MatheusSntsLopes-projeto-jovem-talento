@@ -6,5 +6,6 @@ export declare class UpdateVagaDto extends UpdateVagaDto_base {
     habilidade: string;
     quantidade: number;
     salario: number;
+    empresarioId: number;
 }
 export {};

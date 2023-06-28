@@ -13,7 +13,9 @@ import { CreateCurriculoDto } from './dto/create-curriculo.dto';
 import { UpdateCurriculoDto } from './dto/update-curriculo.dto';
 import { Curriculo } from './entities/curriculo.entity';
 import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('curriculo')
 @Controller('curriculo')
 export class CurriculoController {
   constructor(private readonly curriculoService: CurriculoService) {}

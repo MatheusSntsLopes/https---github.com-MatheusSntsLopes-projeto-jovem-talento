@@ -18,6 +18,7 @@ const candidato_service_1 = require("./candidato.service");
 const create_candidato_dto_1 = require("./dto/create-candidato.dto");
 const update_candidato_dto_1 = require("./dto/update-candidato.dto");
 const jwt_auth_guard_1 = require("../authen/guards/jwt-auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let CandidatoController = class CandidatoController {
     constructor(candidatoService) {
         this.candidatoService = candidatoService;
@@ -77,6 +78,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CandidatoController.prototype, "remove", null);
 CandidatoController = __decorate([
+    (0, swagger_1.ApiTags)('candidato'),
     (0, common_1.Controller)('candidato'),
     __metadata("design:paramtypes", [candidato_service_1.CandidatoService])
 ], CandidatoController);

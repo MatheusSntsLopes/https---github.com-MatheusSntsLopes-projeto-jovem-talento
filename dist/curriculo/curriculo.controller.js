@@ -18,6 +18,7 @@ const curriculo_service_1 = require("./curriculo.service");
 const create_curriculo_dto_1 = require("./dto/create-curriculo.dto");
 const update_curriculo_dto_1 = require("./dto/update-curriculo.dto");
 const jwt_auth_guard_1 = require("../authen/guards/jwt-auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let CurriculoController = class CurriculoController {
     constructor(curriculoService) {
         this.curriculoService = curriculoService;
@@ -77,6 +78,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CurriculoController.prototype, "remove", null);
 CurriculoController = __decorate([
+    (0, swagger_1.ApiTags)('curriculo'),
     (0, common_1.Controller)('curriculo'),
     __metadata("design:paramtypes", [curriculo_service_1.CurriculoService])
 ], CurriculoController);

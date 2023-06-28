@@ -10,14 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginRequestBody = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class LoginRequestBody {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'email@email.com',
+        description: `O e-mail é necessário apra o login, mas não necessariamente precisa ser o mesmo e-mail da rede social que estiver conectada. Login sem rede social precisa de uma senha.`,
+    }),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], LoginRequestBody.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Alo1234@',
+        description: `É possível conectar com redes sociais sem uma senha, mas para login usando o e-mail diretamente é necessário informar uma senha.`,
+    }),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], LoginRequestBody.prototype, "password", void 0);

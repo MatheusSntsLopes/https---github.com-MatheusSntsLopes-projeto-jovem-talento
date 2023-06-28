@@ -13,7 +13,9 @@ import { VagaService } from './vaga.service';
 import { CreateVagaDto } from './dto/create-vaga.dto';
 import { UpdateVagaDto } from './dto/update-vaga.dto';
 import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('vaga')
 @Controller('vaga')
 export class VagaController {
   constructor(private readonly vagaService: VagaService) {}

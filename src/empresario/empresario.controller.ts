@@ -13,7 +13,9 @@ import { CreateEmpresarioDto } from './dto/create-empresario.dto';
 import { UpdateEmpresarioDto } from './dto/update-empresario.dto';
 import { Empresario } from './entities/empresario.entity';
 import { JwtAuthGuard } from 'src/authen/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('empresario')
 @Controller('empresario')
 export class EmpresarioController {
   constructor(private readonly empresarioService: EmpresarioService) {}
