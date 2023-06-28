@@ -81,12 +81,10 @@ function confereSenha() {
   }
 }
 
-function cadastrarCurriculo() {
+function salvarCurriculo() {
   event.preventDefault();
 
-  console.log("cadastrarCurriculo")
-
-  let url = 'http://localhost:3000/curriculo';
+  let url = `${baseURL}/curriculo`;
 
   let dados = {
     candidatoId: usuarioLogado.id,
@@ -97,19 +95,60 @@ function cadastrarCurriculo() {
     competencia: competencia.value,
   }
 
-  axios
+  if (curriculo == null) {
+    axios
     .post(url, dados, {
       headers: {
-        "access_token": `${usuarioLogado.access_token}`
+        Authorization: `Bearer ${usuarioLogado.access_token}`
       }
     })
 
     .then(function (response) {
       console.log(response);
       alert('Currículo cadastrado com sucesso!')
-      location.href = ('../front/pages/ambienteCandidato.html')
+      location.href = ('/front/pages/ambienteCandidato.html')
     })
+    
     .catch(function (error) {
       console.error(error);
+      if (error.response.data.message.join) {
+        alert(error.response.data.message.join("\n"));
+      } else {
+        //alert(error.response.data.message);
+        alert("Currículo já cadastrado");
+        location.reload();
+      }
     });
+
+  } else {
+
+    axios
+    .put(
+      url + "/" + curriculo.id,
+      dados, {
+      headers: {
+        Authorization: `Bearer ${usuarioLogado.access_token}`
+      }
+    })
+
+    .then(function (response) {
+      console.log(response);
+      alert('Currículo alterado com sucesso!')
+      location.href = ('/front/pages/ambienteCandidato.html')
+    })
+    
+    .catch(function (error) {
+      console.error(error);
+      if (error.response.data.message.join) {
+        alert(error.response.data.message.join("\n"));
+      } else {
+        //alert(error.response.data.message);
+        alert("Não pode alterar currículo");
+        //location.reload();
+      }
+    });
+    
+
+  }
+
 }
