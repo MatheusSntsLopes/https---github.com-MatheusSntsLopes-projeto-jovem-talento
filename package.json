@@ -28,11 +28,8 @@
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/sequelize": "^9.0.2",
-<<<<<<< HEAD
+    "@nestjs/swagger": "^7.0.12",
     "@popperjs/core": "^2.11.8",
-=======
-    "@nestjs/swagger": "^7.0.10",
->>>>>>> ae3182c5a5cefb4ebedaecf33e60749e20fd2bb8
     "@srexi/purecounterjs": "^1.5.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
@@ -55,6 +52,7 @@
     "rxjs": "^7.2.0",
     "sequelize": "^6.31.0",
     "sequelize-typescript": "^2.1.5",
+    "swagger-ui-express": "^4.6.3",
     "swiper": "^9.4.1"
   },
   "devDependencies": {
