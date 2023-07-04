@@ -33,16 +33,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], UpdateVagaDto.prototype, "experiencia", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
-        description: `Serve para descrever a vaga.`,
-    }),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], UpdateVagaDto.prototype, "habilidade", void 0);
+], UpdateVagaDto.prototype, "cargo", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         example: 'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',

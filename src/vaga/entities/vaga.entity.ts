@@ -34,14 +34,11 @@ export class Vaga extends Model<Vaga> {
   @Column({ type: DataType.STRING, allowNull: false })
   formacao: string;
 
-  @Column({ type: DataType.STRING, allowNull: false })
-  experiencia: string;
-
   @Column({ type: DataType.INTEGER, allowNull: false })
   quantidade: number;
 
   @Column({ type: DataType.STRING, allowNull: false })
-  habilidade: string;
+  cargo: string;
 
   @HasMany((): typeof CandidatoVaga => CandidatoVaga)
   candidatoVaga: CandidatoVaga[];

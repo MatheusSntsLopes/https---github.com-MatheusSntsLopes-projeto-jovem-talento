@@ -6,9 +6,8 @@ export declare class Vaga extends Model<Vaga> {
     empresarioId: number;
     salario: number;
     formacao: string;
-    experiencia: string;
     quantidade: number;
-    habilidade: string;
+    cargo: string;
     candidatoVaga: CandidatoVaga[];
     empresario: Empresario;
 }

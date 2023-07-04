@@ -1,7 +1,6 @@
 export declare class CreateVagaDto {
     formacao: string;
-    experiencia: string;
-    habilidade: string;
+    cargo: string;
     quantidade: number;
     salario: number;
     empresarioId: number;

@@ -19,16 +19,7 @@ export class UpdateVagaDto extends PartialType(CreateVagaDto) {
   })
   @IsNotEmpty()
   @IsString()
-  experiencia: string;
-
-  @ApiProperty({
-    example:
-      'Buscamos um(a) vendedor(a) para fornecer excelente serviço ao cliente e atender às cotas de vendas para nossa empresa. Candidatos com fortes habilidades de comunicação que podem fazer os clientes se sentirem bem-vindos em nossa loja se destacam.',
-    description: `Serve para descrever a vaga.`,
-  })
-  @IsNotEmpty()
-  @IsString()
-  habilidade: string;
+  cargo: string;
 
   @ApiProperty({
     example:

@@ -7,6 +7,6 @@ export declare class VagaService {
     create(vagaDto: CreateVagaDto): Promise<Vaga>;
     findAll(): Promise<Vaga[]>;
     findOne(id: number): Promise<Vaga>;
-    update(id: number, { formacao, experiencia, habilidade, quantidade, salario }: UpdateVagaDto): Promise<Vaga>;
+    update(id: number, { formacao, cargo, quantidade, salario }: UpdateVagaDto): Promise<Vaga>;
     remove(id: number): Promise<void>;
 }

@@ -72,7 +72,7 @@ export class VagaService {
 
   async update(
     id: number,
-    { formacao, experiencia, habilidade, quantidade, salario }: UpdateVagaDto,
+    { formacao, cargo, quantidade, salario }: UpdateVagaDto,
   ): Promise<Vaga> {
     try {
       const vagaExiste: Vaga = await this.vaga.findByPk(id, {
@@ -85,8 +85,7 @@ export class VagaService {
 
       const novosDados: Vaga = await vagaExiste.update({
         formacao,
-        experiencia,
-        habilidade,
+        cargo,
         quantidade,
         salario,
       });

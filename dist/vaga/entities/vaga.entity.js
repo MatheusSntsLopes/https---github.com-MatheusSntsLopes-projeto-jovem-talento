@@ -42,17 +42,13 @@ __decorate([
     __metadata("design:type", String)
 ], Vaga.prototype, "formacao", void 0);
 __decorate([
-    (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
-    __metadata("design:type", String)
-], Vaga.prototype, "experiencia", void 0);
-__decorate([
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.INTEGER, allowNull: false }),
     __metadata("design:type", Number)
 ], Vaga.prototype, "quantidade", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({ type: sequelize_typescript_1.DataType.STRING, allowNull: false }),
     __metadata("design:type", String)
-], Vaga.prototype, "habilidade", void 0);
+], Vaga.prototype, "cargo", void 0);
 __decorate([
     (0, sequelize_typescript_1.HasMany)(() => candidato_vaga_entity_1.CandidatoVaga),
     __metadata("design:type", Array)

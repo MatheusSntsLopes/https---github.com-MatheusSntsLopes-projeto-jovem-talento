@@ -20,6 +20,8 @@ function efetuarLogin() {
     })
     .catch(function (error) {
       console.error(error);
+      alert("Login inválido!");
+
     });
 }
 
@@ -115,8 +117,9 @@ function salvarCurriculo() {
         alert(error.response.data.message.join("\n"));
       } else {
         //alert(error.response.data.message);
-        alert("Currículo já cadastrado");
-        location.reload();
+        alert("Currículo cadastrado com sucesso!");
+        location.href = ('/front/pages/ambienteCandidato.html')
+        // location.reload();
       }
     });
 

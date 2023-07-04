@@ -70,7 +70,7 @@ let VagaService = class VagaService {
         }
         return vagaEncontrada;
     }
-    async update(id, { formacao, experiencia, habilidade, quantidade, salario }) {
+    async update(id, { formacao, cargo, quantidade, salario }) {
         try {
             const vagaExiste = await this.vaga.findByPk(id, {
                 rejectOnEmpty: true,
@@ -80,8 +80,7 @@ let VagaService = class VagaService {
             }
             const novosDados = await vagaExiste.update({
                 formacao,
-                experiencia,
-                habilidade,
+                cargo,
                 quantidade,
                 salario,
             });
