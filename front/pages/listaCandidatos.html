@@ -14,8 +14,9 @@
     <link href="/front/assets/css/ambientes.css" rel="stylesheet">
     <link href="/front/assets/img/favicon.png" rel="icon">
 </head>
-<body>
-    
+
+<body onload="listaCandidatos()">
+
     <h1>Lista de Candidatos Disponíveis</h1>
 
     <div class="accordion" id="divCandidatos"></div>
@@ -25,58 +26,9 @@
 
     <script src="/node_modules/aos/dist/aos.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> -->
     <script src="/node_modules/swiper/swiper-bundle.js"></script>
     <script src="/node_modules/axios/dist/axios.js"></script>
     <script src="/front/assets/js/functions.js"></script>
-    
-
-    <script>
-
-        axios.get(
-            `${baseURL}/candidato`, 
-        )
-            .then(function (response) {
-                console.log(response.data);
-                let candidatos = response.data;
-                for (let i = 0; i < candidatos.length; i++) {
-                    $("#divCandidatos").append(`
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading${i}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne">
-                                    ${candidatos[i].name} (${candidatos[i].cidade} - ${candidatos[i].estado})
-                                </button>
-                            </h2>`);
-                    if (candidatos[i].curriculo) {
-                        $("#divCandidatos").append(`
-                            <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divCandidatos">
-                                <div class="accordion-body">
-                                    <h3>Biografia</h3>
-                                    <p>${candidatos[i].curriculo.biografia}</p>
-                                    <h3>Formação</h3>
-                                    <p>${candidatos[i].curriculo.formacao}</p>
-                                    <h3>Habilidades</h3>
-                                    <p>${candidatos[i].curriculo.habilidade}</p>
-                                    <h3>Experiência</h3>
-                                    <p>${candidatos[i].curriculo.experiencia}</p>
-                                    <h3>Competência</h3>
-                                    <p>${candidatos[i].curriculo.competencia}</p>
-                                </div>
-                            </div>
-                        </div>`);
-                    } else {
-                        $("#divCandidatos").append(`
-                            <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divCandidatos">
-                                <div class="accordion-body">
-                                    <p>Currículo não cadastrado</p>
-                                </div>
-                            </div>
-                        </div>`);
-                    }
-                }
-            })
-
-    </script>
 
 </body>
 </html>

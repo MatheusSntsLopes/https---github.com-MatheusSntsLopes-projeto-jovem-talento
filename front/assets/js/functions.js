@@ -1,5 +1,4 @@
-//const { data } = require("jquery");
-
+// Geral
 function efetuarLogin() {
   event.preventDefault();
 
@@ -16,7 +15,7 @@ function efetuarLogin() {
       } else {
         location.assign("../front/pages/ambienteCandidato.html")
       }
-      
+
     })
     .catch(function (error) {
       console.error(error);
@@ -27,8 +26,8 @@ function efetuarLogin() {
 
 function efetuarLogout() {
   event.preventDefault();
-  
-  localStorage.removeItem ("usuarioLogado");
+
+  localStorage.removeItem("usuarioLogado");
   location.assign("../index.html");
 }
 
@@ -83,6 +82,7 @@ function confereSenha() {
   }
 }
 
+// Candidato
 function salvarCurriculo() {
   event.preventDefault();
 
@@ -99,59 +99,224 @@ function salvarCurriculo() {
 
   if (curriculo == null) {
     axios
+      .post(url, dados, {
+        headers: {
+          Authorization: `Bearer ${usuarioLogado.access_token}`
+        }
+      })
+
+      .then(function (response) {
+        console.log(response);
+        alert('Currículo cadastrado com sucesso!')
+        location.href = ('/front/pages/ambienteCandidato.html')
+      })
+
+      .catch(function (error) {
+        console.error(error);
+        if (error.response.data.message.join) {
+          alert(error.response.data.message.join("\n"));
+        } else {
+          //alert(error.response.data.message);
+          alert("Currículo cadastrado com sucesso!");
+          location.href = ('/front/pages/ambienteCandidato.html')
+          // location.reload();
+        }
+      });
+
+  } else {
+
+    axios
+      .put(
+        url + "/" + curriculo.id,
+        dados, {
+        headers: {
+          Authorization: `Bearer ${usuarioLogado.access_token}`
+        }
+      })
+
+      .then(function (response) {
+        console.log(response);
+        alert('Currículo alterado com sucesso!')
+        location.href = ('/front/pages/ambienteCandidato.html')
+      })
+
+      .catch(function (error) {
+        console.error(error);
+        if (error.response.data.message.join) {
+          alert(error.response.data.message.join("\n"));
+        } else {
+          //alert(error.response.data.message);
+          alert("Não pode alterar currículo");
+          //location.reload();
+        }
+      });
+
+
+  }
+
+}
+
+function listaVagas() {
+
+  axios.get(
+    `${baseURL}/vaga`,
+  )
+    .then(function (response) {
+      console.log(response.data);
+      let vagas = response.data;
+      for (let i = 0; i < vagas.length; i++) {
+        $("#divEmpresarios").append(`
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading${i}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne">
+                            ${vagas[i].cargo} - ${vagas[i].salario}
+                        </button>
+                    </h2>`);
+        if (vagas[i]) {
+          $("#divEmpresarios").append(`
+                    <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divEmpresarios">
+                        <div class="accordion-body">
+                            <h3>Cargo</h3>
+                            <p>${vagas[i].cargo}</p>
+                            <h3>Formação</h3>
+                            <p>${vagas[i].formacao}</p>
+                            <h3>Salário</h3>
+                            <p>${vagas[i].salario}</p>
+                            <h3>Quantidade</h3>
+                            <p>${vagas[i].quantidade}</p>                             
+                        </div>
+                    </div>
+                </div>`);
+        } else {
+          $("#divEmpresarios").append(`
+                    <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divEmpresarios">
+                        <div class="accordion-body">
+                            <p>Vaga não cadastrada</p>
+                        </div>
+                    </div>
+                </div>`);
+        }
+      }
+    })
+}
+
+// Emrpesário
+function cadastrarVaga() {
+  event.preventDefault();
+
+  let url = 'http://localhost:3000/vaga';
+
+  let dados = {
+    cargo: cargo.value,
+    formacao: formacao.value,
+    salario: parseFloat(salario.value),
+    quantidade: parseInt(quantidade.value),
+    empresarioId: usuarioLogado.id,
+  }
+
+  axios
     .post(url, dados, {
       headers: {
         Authorization: `Bearer ${usuarioLogado.access_token}`
       }
     })
-
     .then(function (response) {
       console.log(response);
-      alert('Currículo cadastrado com sucesso!')
-      location.href = ('/front/pages/ambienteCandidato.html')
+      alert('Vaga cadastrada com sucesso!')
+      location.href = ('ambienteEmpresario.html')
     })
-    
     .catch(function (error) {
       console.error(error);
-      if (error.response.data.message.join) {
-        alert(error.response.data.message.join("\n"));
-      } else {
-        //alert(error.response.data.message);
-        alert("Currículo cadastrado com sucesso!");
-        location.href = ('/front/pages/ambienteCandidato.html')
-        // location.reload();
-      }
     });
+}
 
-  } else {
+function minhasVagas() {
 
-    axios
-    .put(
-      url + "/" + curriculo.id,
-      dados, {
-      headers: {
-        Authorization: `Bearer ${usuarioLogado.access_token}`
-      }
-    })
-
+  axios.get(
+    `${baseURL}/empresario/${usuarioLogado.id}`,
+  )
     .then(function (response) {
-      console.log(response);
-      alert('Currículo alterado com sucesso!')
-      location.href = ('/front/pages/ambienteCandidato.html')
-    })
-    
-    .catch(function (error) {
-      console.error(error);
-      if (error.response.data.message.join) {
-        alert(error.response.data.message.join("\n"));
+      console.log(response.data);
+      let vagas = response.data.vaga;
+      if (vagas.length == 0) {
+        $("#divVagas").append(`
+                            <div id="collapse0" class="accordion-collapse collapse" aria-labelledby="heading0" data-bs-parent="#divVagas">
+                                <div class="accordion-body">
+                                    <p>Nenhuma vaga cadastrada.</p>
+                                </div>
+                            </div>
+                        </div>`);
       } else {
-        //alert(error.response.data.message);
-        alert("Não pode alterar currículo");
-        //location.reload();
+        for (let i = 0; i < vagas.length; i++) {
+          $("#divVagas").append(`
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading${i}">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne">
+                                    ${vagas[i].cargo} - ${vagas[i].salario}
+                                </button>
+                            </h2>`);
+          $("#divVagas").append(`
+                            <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divVagas">
+                                <div class="accordion-body">
+                                    <h3>Cargo</h3>
+                                    <p>${vagas[i].cargo}</p>
+                                    <h3>Formação</h3>
+                                    <p>${vagas[i].formacao}</p>
+                                    <h3>Salário</h3>
+                                    <p>${vagas[i].salario}</p>
+                                    <h3>Quantidade</h3>
+                                    <p>${vagas[i].quantidade}</p>                                    
+                                </div>
+                            </div>
+                        </div>`);
+        }
       }
-    });
-    
 
-  }
+    })
+}
 
+function listaCandidatos() {
+
+  axios.get(
+    `${baseURL}/candidato`,
+  )
+    .then(function (response) {
+      console.log(response.data);
+      let candidatos = response.data;
+      for (let i = 0; i < candidatos.length; i++) {
+        $("#divCandidatos").append(`
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading${i}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne">
+                            ${candidatos[i].name} (${candidatos[i].cidade} - ${candidatos[i].estado})
+                        </button>
+                    </h2>`);
+        if (candidatos[i].curriculo) {
+          $("#divCandidatos").append(`
+                    <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divCandidatos">
+                        <div class="accordion-body">
+                            <h3>Biografia</h3>
+                            <p>${candidatos[i].curriculo.biografia}</p>
+                            <h3>Formação</h3>
+                            <p>${candidatos[i].curriculo.formacao}</p>
+                            <h3>Habilidades</h3>
+                            <p>${candidatos[i].curriculo.habilidade}</p>
+                            <h3>Experiência</h3>
+                            <p>${candidatos[i].curriculo.experiencia}</p>
+                            <h3>Competência</h3>
+                            <p>${candidatos[i].curriculo.competencia}</p>
+                        </div>
+                    </div>
+                </div>`);
+        } else {
+          $("#divCandidatos").append(`
+                    <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divCandidatos">
+                        <div class="accordion-body">
+                            <p>Currículo não cadastrado</p>
+                        </div>
+                    </div>
+                </div>`);
+        }
+      }
+    })
 }

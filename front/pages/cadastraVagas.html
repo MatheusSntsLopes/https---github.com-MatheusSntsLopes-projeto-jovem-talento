@@ -87,44 +87,9 @@
 
     <script src="/node_modules/aos/dist/aos.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="/node_modules/swiper/swiper-bundle.js"></script>
     <script src="/node_modules/axios/dist/axios.js"></script>
     <script src="/front/assets/js/functions.js"></script>
-    
-
-    <script>
-
-        function cadastrarVaga() {
-            event.preventDefault();
-
-            let url = 'http://localhost:3000/vaga';
-
-            let dados = {
-                cargo: cargo.value,
-                formacao: formacao.value,
-                salario: parseFloat(salario.value),
-                quantidade: parseInt(quantidade.value),
-                empresarioId: usuarioLogado.id,
-            }
-
-            axios
-                .post(url, dados, {
-                    headers: {
-                        Authorization: `Bearer ${usuarioLogado.access_token}`
-                    }
-                })
-                .then(function (response) {
-                    console.log(response);
-                    alert('Vaga cadastrada com sucesso!')
-                    location.href = ('ambienteEmpresario.html')
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
-        }
-
-    </script>
 
 </body>
 
