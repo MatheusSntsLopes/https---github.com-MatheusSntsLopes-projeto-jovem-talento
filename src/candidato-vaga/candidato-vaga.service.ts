@@ -139,10 +139,10 @@ export class CandidatoVagaService {
     }
   }
 
-  async findAllCandidatoVaga(candidatoId:number): Promise<CandidatoVaga[]> {
+  async findAllCandidatoVaga(candidatoId: number): Promise<CandidatoVaga[]> {
     try {
-      const candidatoVaga:CandidatoVaga[] = await this.candidatoVaga.findAll({
-        where: {candidatoId},
+      const candidatoVaga: CandidatoVaga[] = await this.candidatoVaga.findAll({
+        where: { candidatoId },
         include: [
           {
             model: Vaga,
@@ -155,14 +155,23 @@ export class CandidatoVagaService {
     }
   }
 
-  async findAllVagaCandidato(vagaId:number): Promise<CandidatoVaga[]> {
+  async findAllVagaCandidato(vagaId: number): Promise<CandidatoVaga[]> {
     try {
-      const candidatoVaga:CandidatoVaga[] = await this.candidatoVaga.findAll({
-        where: {vagaId},
+      const candidatoVaga: CandidatoVaga[] = await this.candidatoVaga.findAll({
+        where: { vagaId },
         include: [
           {
             model: Candidato,
-            attributes:['name', 'cpf', 'telefone', 'estado', 'cidade','cep','bairro', 'rua'],
+            attributes: [
+              'name',
+              'cpf',
+              'telefone',
+              'estado',
+              'cidade',
+              'cep',
+              'bairro',
+              'rua',
+            ],
           },
         ],
       });
