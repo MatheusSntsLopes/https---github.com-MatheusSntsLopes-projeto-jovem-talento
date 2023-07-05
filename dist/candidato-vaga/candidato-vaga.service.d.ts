@@ -10,4 +10,6 @@ export declare class CandidatoVagaService {
     update(id: number, { status }: UpdateCandidatoVagaDto): Promise<CandidatoVaga>;
     remove(id: number): Promise<void>;
     findCandidato(vagaId: number): Promise<CandidatoVaga>;
+    findAllCandidatoVaga(candidatoId: number): Promise<CandidatoVaga[]>;
+    findAllVagaCandidato(vagaId: number): Promise<CandidatoVaga[]>;
 }

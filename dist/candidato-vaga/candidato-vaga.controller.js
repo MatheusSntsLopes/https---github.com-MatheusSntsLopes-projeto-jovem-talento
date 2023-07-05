@@ -41,6 +41,12 @@ let CandidatoVagaController = class CandidatoVagaController {
     findCandidato(vagaId) {
         return this.candidatoVagaService.findCandidato(+vagaId);
     }
+    findAllCandidatoVaga(candidatoId) {
+        return this.candidatoVagaService.findAllCandidatoVaga(+candidatoId);
+    }
+    findAllVagaCandidato(vagaId) {
+        return this.candidatoVagaService.findAllVagaCandidato(+vagaId);
+    }
 };
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
@@ -87,6 +93,20 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], CandidatoVagaController.prototype, "findCandidato", null);
+__decorate([
+    (0, common_1.Get)('candidato/:candidatoId'),
+    __param(0, (0, common_1.Param)('candidatoId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], CandidatoVagaController.prototype, "findAllCandidatoVaga", null);
+__decorate([
+    (0, common_1.Get)('vaga/:vagaId'),
+    __param(0, (0, common_1.Param)('vagaId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], CandidatoVagaController.prototype, "findAllVagaCandidato", null);
 CandidatoVagaController = __decorate([
     (0, swagger_1.ApiTags)('candidato-vaga'),
     (0, common_1.Controller)('candidato-vaga'),

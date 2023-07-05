@@ -138,4 +138,37 @@ export class CandidatoVagaService {
       throw new BadRequestException(e.message);
     }
   }
+
+  async findAllCandidatoVaga(candidatoId:number): Promise<CandidatoVaga[]> {
+    try {
+      const candidatoVaga:CandidatoVaga[] = await this.candidatoVaga.findAll({
+        where: {candidatoId},
+        include: [
+          {
+            model: Vaga,
+          },
+        ],
+      });
+      return candidatoVaga;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
+  }
+
+  async findAllVagaCandidato(vagaId:number): Promise<CandidatoVaga[]> {
+    try {
+      const candidatoVaga:CandidatoVaga[] = await this.candidatoVaga.findAll({
+        where: {vagaId},
+        include: [
+          {
+            model: Candidato,
+            attributes:['name', 'cpf', 'telefone', 'estado', 'cidade','cep','bairro', 'rua'],
+          },
+        ],
+      });
+      return candidatoVaga;
+    } catch (e) {
+      throw new BadRequestException(e.message);
+    }
+  }
 }

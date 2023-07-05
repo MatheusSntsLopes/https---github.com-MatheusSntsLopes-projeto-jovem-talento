@@ -7,6 +7,5 @@ export class UpdateCandidatoVagaDto extends PartialType(
   CreateCandidatoVagaDto,
 ) {
   @IsEnum(STATUS_TIPO)
-  @IsNotEmpty()
-  status?: STATUS_TIPO;
+  status: STATUS_TIPO.INTERESSADO;
 }

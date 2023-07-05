@@ -11,4 +11,6 @@ export declare class CandidatoVagaController {
     update(id: string, updateCandidatoVagaDto: UpdateCandidatoVagaDto): Promise<CandidatoVaga>;
     remove(id: string): Promise<void>;
     findCandidato(vagaId: string): Promise<CandidatoVaga>;
+    findAllCandidatoVaga(candidatoId: string): Promise<CandidatoVaga[]>;
+    findAllVagaCandidato(vagaId: string): Promise<CandidatoVaga[]>;
 }

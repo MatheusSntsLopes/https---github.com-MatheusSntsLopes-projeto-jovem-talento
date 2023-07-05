@@ -3,7 +3,7 @@ function efetuarLogin() {
   event.preventDefault();
 
   axios
-    .post('http://localhost:3000/login', {
+    .post(`${baseURL}/login`, {
       email: email.value,
       password: password.value,
     })
@@ -156,7 +156,20 @@ function salvarCurriculo() {
 
 }
 
-function listaVagas() {
+async function listaVagas() {
+
+  let vagasCandidatadas;
+
+  await axios.get(
+        `${baseURL}/candidato-vaga/candidato/${usuarioLogado.id}`,
+      )
+        .then(function (response) {
+          vagasCandidatadas = (response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+          vagasCandidatadas = [];
+        });
 
   axios.get(
     `${baseURL}/vaga`,
@@ -167,14 +180,14 @@ function listaVagas() {
       for (let i = 0; i < vagas.length; i++) {
         $("#divEmpresarios").append(`
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading${i}">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="true" aria-controls="collapseOne">
+                    <h2 class="accordion-header" id="heading${vagas[i].id}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${vagas[i].id}" aria-expanded="true" aria-controls="collapseOne">
                             ${vagas[i].cargo} - ${vagas[i].salario}
                         </button>
                     </h2>`);
         if (vagas[i]) {
           $("#divEmpresarios").append(`
-                    <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divEmpresarios">
+                    <div id="collapse${vagas[i].id}" class="accordion-collapse collapse" aria-labelledby="heading${vagas[i].id}" data-bs-parent="#divEmpresarios">
                         <div class="accordion-body">
                             <h3>Cargo</h3>
                             <p>${vagas[i].cargo}</p>
@@ -185,16 +198,25 @@ function listaVagas() {
                             <h3>Quantidade</h3>
                             <p>${vagas[i].quantidade}</p>                             
                         </div>
+                          <div class="text-left">
+                              <button type="button" onclick="candidatarVaga(${vagas[i].id})" class="btnCandidatar btn btn-primary btn-lg">Candidatar-se</button>
+                              <button class="btnDescandidatar btn btn-secondary d-none">Já candidatado</button>
+                              <br>
+                          </div>
                     </div>
                 </div>`);
         } else {
           $("#divEmpresarios").append(`
-                    <div id="collapse${i}" class="accordion-collapse collapse" aria-labelledby="heading${i}" data-bs-parent="#divEmpresarios">
+                    <div id="collapse${vagas[i].id}" class="accordion-collapse collapse" aria-labelledby="heading${vagas[i].id}" data-bs-parent="#divEmpresarios">
                         <div class="accordion-body">
                             <p>Vaga não cadastrada</p>
                         </div>
                     </div>
                 </div>`);
+        }
+        if (vagasCandidatadas.filter(cv => cv.vagaId == vagas[i].id).length > 0) {
+          $(`#collapse${vagas[i].id} .btnCandidatar`).addClass("d-none");
+          $(`#collapse${vagas[i].id} .btnDescandidatar`).removeClass("d-none");           
         }
       }
     })
@@ -204,7 +226,7 @@ function listaVagas() {
 function cadastrarVaga() {
   event.preventDefault();
 
-  let url = 'http://localhost:3000/vaga';
+  let url = `${baseURL}/vaga`;
 
   let dados = {
     cargo: cargo.value,
@@ -265,7 +287,7 @@ function minhasVagas() {
                                     <h3>Salário</h3>
                                     <p>${vagas[i].salario}</p>
                                     <h3>Quantidade</h3>
-                                    <p>${vagas[i].quantidade}</p>                                    
+                                    <p>${vagas[i].quantidade}</p>                                   
                                 </div>
                             </div>
                         </div>`);
@@ -319,4 +341,35 @@ function listaCandidatos() {
         }
       }
     })
+}
+
+function candidatarVaga(vagaId) {
+  event.preventDefault();  
+
+  $(`#collapse${vagaId} .btnCandidatar`).addClass("d-none");
+  $(`#collapse${vagaId} .btnDescandidatar`).removeClass("d-none");
+
+  let url = `${baseURL}/candidato-vaga`;
+
+  let dados = {
+    candidatoId: usuarioLogado.id,
+    vagaId: vagaId,
+  }
+
+  axios
+    .post(url, dados, {
+      headers: {
+        Authorization: `Bearer ${usuarioLogado.access_token}`
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.error(error);
+      alert("Houve uma falha no registro!")
+      $(`#collapse${vagaId} .btnCandidatar`).removeClass("d-none");
+      $(`#collapse${vagaId} .btnDescandidatar`).addClass("d-none");
+   });
+   
 }

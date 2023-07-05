@@ -18,7 +18,6 @@ class UpdateCandidatoVagaDto extends (0, mapped_types_1.PartialType)(create_cand
 }
 __decorate([
     (0, class_validator_1.IsEnum)(Status_tipo_1.STATUS_TIPO),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], UpdateCandidatoVagaDto.prototype, "status", void 0);
 exports.UpdateCandidatoVagaDto = UpdateCandidatoVagaDto;

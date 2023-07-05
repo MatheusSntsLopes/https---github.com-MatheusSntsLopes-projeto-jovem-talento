@@ -58,4 +58,14 @@ export class CandidatoVagaController {
   findCandidato(@Param('vagaId') vagaId: string): Promise<CandidatoVaga> {
     return this.candidatoVagaService.findCandidato(+vagaId);
   }
+
+  @Get('candidato/:candidatoId')
+  findAllCandidatoVaga(@Param('candidatoId') candidatoId: string): Promise<CandidatoVaga[]> {
+    return this.candidatoVagaService.findAllCandidatoVaga(+candidatoId);
+  }
+
+  @Get('vaga/:vagaId')
+  findAllVagaCandidato(@Param('vagaId') vagaId: string): Promise<CandidatoVaga[]> {
+    return this.candidatoVagaService.findAllVagaCandidato(+vagaId);
+  }
 }

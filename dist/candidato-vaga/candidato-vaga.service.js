@@ -122,6 +122,39 @@ let CandidatoVagaService = class CandidatoVagaService {
             throw new common_1.BadRequestException(e.message);
         }
     }
+    async findAllCandidatoVaga(candidatoId) {
+        try {
+            const candidatoVaga = await this.candidatoVaga.findAll({
+                where: { candidatoId },
+                include: [
+                    {
+                        model: vaga_entity_1.Vaga,
+                    },
+                ],
+            });
+            return candidatoVaga;
+        }
+        catch (e) {
+            throw new common_1.BadRequestException(e.message);
+        }
+    }
+    async findAllVagaCandidato(vagaId) {
+        try {
+            const candidatoVaga = await this.candidatoVaga.findAll({
+                where: { vagaId },
+                include: [
+                    {
+                        model: candidato_entity_1.Candidato,
+                        attributes: ['name', 'cpf', 'telefone', 'estado', 'cidade', 'cep', 'bairro', 'rua'],
+                    },
+                ],
+            });
+            return candidatoVaga;
+        }
+        catch (e) {
+            throw new common_1.BadRequestException(e.message);
+        }
+    }
 };
 CandidatoVagaService = __decorate([
     (0, common_1.Injectable)(),
