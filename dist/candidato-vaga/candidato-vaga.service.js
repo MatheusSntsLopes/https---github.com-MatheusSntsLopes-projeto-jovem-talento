@@ -145,7 +145,16 @@ let CandidatoVagaService = class CandidatoVagaService {
                 include: [
                     {
                         model: candidato_entity_1.Candidato,
-                        attributes: ['name', 'cpf', 'telefone', 'estado', 'cidade', 'cep', 'bairro', 'rua'],
+                        attributes: [
+                            'name',
+                            'cpf',
+                            'telefone',
+                            'estado',
+                            'cidade',
+                            'cep',
+                            'bairro',
+                            'rua',
+                        ],
                     },
                 ],
             });

@@ -101,7 +101,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CandidatoVagaController.prototype, "findAllCandidatoVaga", null);
 __decorate([
-    (0, common_1.Get)('vaga/:vagaId'),
+    (0, common_1.Get)('vagas/:vagaId'),
     __param(0, (0, common_1.Param)('vagaId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

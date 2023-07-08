@@ -64,7 +64,7 @@ export class CandidatoVagaController {
     return this.candidatoVagaService.findAllCandidatoVaga(+candidatoId);
   }
 
-  @Get('vaga/:vagaId')
+  @Get('vagas/:vagaId')
   findAllVagaCandidato(@Param('vagaId') vagaId: string): Promise<CandidatoVaga[]> {
     return this.candidatoVagaService.findAllVagaCandidato(+vagaId);
   }

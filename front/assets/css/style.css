@@ -1,5 +1,6 @@
 /* Default tags */
 body {
+  height: 100%;
   background: #fff;
   color: #444;
   font-family: "Open Sans", sans-serif;
@@ -794,18 +795,19 @@ section {
 }
 
 /* Rodapé básico */
-#footer {
+
+#footerHome {
   background: #00428a;
   padding: 0 0 30px 0;
   color: #eee;
   font-size: 14px;
 }
 
-#footer .copyright {
+#footerHome .copyright {
   text-align: center;
   padding-top: 30px;
 }
-
+  
 /* Botãozinho scroll */
 .back-to-top {
   position: fixed;

@@ -2,34 +2,52 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Vagas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minhas Vagas</title>
 
-    <script src="/node_modules/jquery/dist/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="/front/assets/css/style.css" rel="stylesheet">
-    <link href="/front/assets/css/ambientes.css" rel="stylesheet">
-    <link href="/front/assets/img/favicon.png" rel="icon">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link href="/front/assets/css/style.css" rel="stylesheet">
+  <link href="/front/assets/css/ambientes.css" rel="stylesheet">
+  <link href="/front/assets/img/favicon.png" rel="icon">
+  <link href="/front/assets/css/acordeon.css" rel="stylesheet">
 </head>
 
 <body onload="minhasVagas()">
 
-    <h1>Minhas Vagas Cadastradas</h1>
+  <div class="wrapper">
+    
+    <h1 class="text-center fw-bold">Minhas Vagas</h1>
+    
+    <div class="containerAccordion">
+      
+      <div id="divVagas" class="accordion"></div>
 
-    <div class="accordion" id="divVagas"></div>
+      <div id="modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Candidatos Inscritos</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalContent"></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
-    <script src="/front/assets/js/config.js"></script>
-    <script src="/front/assets/js/theme.js"></script>
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="/node_modules/axios/dist/axios.js"></script>
 
-    <script src="/node_modules/aos/dist/aos.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/node_modules/swiper/swiper-bundle.js"></script>
-    <script src="/node_modules/axios/dist/axios.js"></script>
-    <script src="/front/assets/js/functions.js"></script>
+  <script src="/front/assets/js/config.js"></script>
+  <script src="/front/assets/js/theme.js"></script>
+  <script src="/front/assets/js/functions.js"></script>
+  <script src="/front/assets/js/acordeon.js"></script>
 
 </body>
 

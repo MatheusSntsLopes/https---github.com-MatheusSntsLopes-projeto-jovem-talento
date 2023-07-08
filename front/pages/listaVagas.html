@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Vagas</title>
 
-    <script src="/node_modules/jquery/dist/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  
     <link href="/front/assets/css/style.css" rel="stylesheet">
     <link href="/front/assets/css/ambientes.css" rel="stylesheet">
     <link href="/front/assets/img/favicon.png" rel="icon">
+    <link href="/front/assets/css/acordeon.css" rel="stylesheet">
 </head>
 
 <body onload="listaVagas()">
-    
-    <h1>Lista de Vagas Disponíveis</h1>
 
-    <div class="accordion" id="divEmpresarios"></div>
+    <div class="wrapper">
 
+        <h1 class="text-center fw-bold">Lista de vagas disponíveis</h1>
+
+        <div class="containerAccordion">
+
+            <div id="divEmpresarios" class="accordion"></div>
+
+        </div>
+    </div>
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/axios/dist/axios.js"></script>
+  
     <script src="/front/assets/js/config.js"></script>
     <script src="/front/assets/js/theme.js"></script>
-
-    <script src="/node_modules/aos/dist/aos.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/node_modules/swiper/swiper-bundle.js"></script>
-    <script src="/node_modules/axios/dist/axios.js"></script>
     <script src="/front/assets/js/functions.js"></script>
+    <script src="/front/assets/js/acordeon.js"></script>
 
 </body>
+
 </html>

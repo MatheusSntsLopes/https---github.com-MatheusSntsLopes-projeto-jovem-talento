@@ -1,3 +1,46 @@
+html,
+body {
+  height: 100%;
+}
+
+h1 {
+  margin: 30px;
+  padding: 3em 0 1em 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -30px;
+}
+
+/* .content {
+  padding-bottom: 30px;
+} */
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+#footer {
+  background: #00428a;
+  padding: 0 0 30px 0;
+  color: #eee;
+  font-size: 14px;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 30px;
+}
+
 #navPessoa {
     width: 100%;
     position: relative;
@@ -50,4 +93,20 @@
     margin: auto;
     background: none;
     display: block;
+  }
+
+  .nHV {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 100px;
+  }
+
+  @media (max-width: 991px) {
+   .nHV {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
   }
