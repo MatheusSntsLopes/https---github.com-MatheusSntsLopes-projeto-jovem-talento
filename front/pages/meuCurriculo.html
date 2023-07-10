@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Currículo</title>
 
-    <script src="/node_modules/jquery/dist/jquery.js"></script>
-    <link href="/node_modules/aos/dist/aos.css" rel="stylesheet">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <link href="/front/assets/css/style.css" rel="stylesheet">
     <link href="/front/assets/css/ambientes.css" rel="stylesheet">
     <link href="/front/assets/img/favicon.png" rel="icon">
@@ -18,91 +17,84 @@
 
 <body>
 
-    <section class="vh-100">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-lg-12 col-xl-11">
+    <div class="wrapper">
 
-                    <div class="card-body p-md-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card-body">
 
-                        <form onsubmit="meuCurriculo()">
+                    <h1 class="text-center fw-bold">Meu currículo</h1>
 
-                            <div class="row justify-content-center">
-                                <p class="text-center h1 fw-bold mb-8 mx-1 mx-md-4 mt-4">Meu currículo</p>
+                    <form onsubmit="meuCurriculo()">
+
+                        <div class="col-lg-12 mb-4">
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label for="biografia">Biografia</label>
+                                    <textarea id="biografia" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label for="formacao">Formação</label>
+                                    <textarea id="formacao" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label for="experiencia">Experiências</label>
+                                    <textarea id="experiencia" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label for="habilidade">Habilidades</label>
+                                    <textarea id="habilidade" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label for="competencia">Competências</label>
+                                    <textarea id="competencia" class="form-control" rows="3"></textarea>
+                                </div>
                             </div>
 
-                            <div class="col-lg-12 mb-4">
 
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label for="biografia">Biografia</label>
-                                        <textarea id="biografia" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label for="formacao">Formação</label>
-                                        <textarea id="formacao" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label for="experiencia">Experiências</label>
-                                        <textarea id="experiencia" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label for="habilidade">Habilidades</label>
-                                        <textarea id="habilidade" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-row align-items-center mb-4">
-                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                    <div class="form-outline flex-fill mb-0">
-                                        <label for="competencia">Competências</label>
-                                        <textarea id="competencia" class="form-control" rows="3"></textarea>
-                                    </div>
-                                </div>
 
-                                
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success btn-lg">Salvar</button>
-                                    <br>
-                                </div>
-
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success btn-lg">Salvar</button>
+                                <br>
                             </div>
-                        </form>
 
-                    </div>
+                        </div>
+                    </form>
 
                 </div>
+
             </div>
         </div>
-        </div>
-        </div>
-    </section>
+
+    </div>
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/node_modules/axios/dist/axios.js"></script>
 
     <script src="/front/assets/js/config.js"></script>
     <script src="/front/assets/js/theme.js"></script>
-
-    <script src="/node_modules/aos/dist/aos.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="/node_modules/swiper/swiper-bundle.js"></script>
-    <script src="/node_modules/axios/dist/axios.js"></script>
     <script src="/front/assets/js/functions.js"></script>
-    
+
     <script>
         let curriculo;
 
         axios.get(
-            `${baseURL}/candidato/${usuarioLogado.id}`, 
+            `${baseURL}/candidato/${usuarioLogado.id}`,
         )
             .then(function (response) {
                 console.log(response);
@@ -112,7 +104,7 @@
                     formacao.value = curriculo.formacao;
                     experiencia.value = curriculo.experiencia;
                     habilidade.value = curriculo.habilidade;
-                    competencia.value = curriculo.competencia;  
+                    competencia.value = curriculo.competencia;
                 }
             })
 
