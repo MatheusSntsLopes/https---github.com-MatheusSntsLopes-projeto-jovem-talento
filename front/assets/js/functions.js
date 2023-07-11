@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 // Geral
 function efetuarLogin() {
   event.preventDefault();

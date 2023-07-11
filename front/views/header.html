@@ -17,11 +17,11 @@
 </header>
 
 <script>
-    if (usuarioLogado.tipo === "EMPRESARIO") {
-        tipoUsuario.innerHTML = "Espaço Empresário";
-    } else {
-        tipoUsuario.innerHTML = "Espaço Candidato";
-    }
+  if (usuarioLogado.tipo === "EMPRESARIO") {
+    tipoUsuario.innerHTML = '<a href="/front/pages/ambienteEmpresario.html">Espaço Empresário</a>';
+  } else {
+    tipoUsuario.innerHTML = '<a href="/front/pages/ambienteCandidato.html">Espaço Candidato</a>';
+  }
 
-    meuPerfil.innerHTML = ("  Olá, " + usuarioLogado.name);
+  meuPerfil.innerHTML = "Olá, " + usuarioLogado.name;
 </script>

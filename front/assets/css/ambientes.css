@@ -62,49 +62,29 @@ h1 {
 }
 
 #navPessoa {
-    width: 100%;
-    position: relative;
-    background-size: cover;
     padding: 200px 0 120px 0;
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
   }
   
-  @media (max-width: 991px) {
-    #navPessoa {
-      padding: 140px 0 60px 0;
-    }
-  }
-  
-  @media (max-width: 574px) {
-    #navPessoa {
-      padding: 100px 0 20px 0;
-    }
-  }
-  
+@media (max-width: 991px) {
   #navPessoa {
-    width: 35%;
-    margin-left: 3%;
+    width: 80%;
   }
-  
-  @media (max-width: 991px) {
-    #navPessoa {
-      width: 70%;
-      float: none;
-      margin: auto;
-      text-align: center;
-    }
+}
+
+@media (max-width: 767px) {
+  #navPessoa {
+    width: 80%;
   }
-  
-  @media (max-width: 767px) {
-    #navPessoa {
-      width: 80%;
-    }
+}
+
+@media (max-width: 600px) {
+  #navPessoa {
+    width: 90%;
   }
-  
-  @media (max-width: 600px) {
-    #navPessoa {
-      width: 80%;
-    }
-  }
+}
 
   #meuPerfil {
     border: none;
