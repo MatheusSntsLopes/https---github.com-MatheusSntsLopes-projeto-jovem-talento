@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // Geral
 function efetuarLogin() {
   event.preventDefault();
@@ -181,7 +182,7 @@ async function listaVagas() {
                 <div class="accordion-item">
                     <dt class="accordion-header" id="heading${vagas[i].id}">
                         <a class="accordion-title accordionTitle js-accordionTrigger" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${vagas[i].id}" aria-expanded="true" aria-controls="collapseOne">
-                            ${vagas[i].cargo} - ${vagas[i].salario}
+                            ${vagas[i].cargo} | Salário: R$${vagas[i].salario},00
                         </a>
                     </dt>`);
         if (vagas[i]) {
@@ -287,7 +288,7 @@ function minhasVagas() {
                   <text class="acordeonTitulo">Quantidade</text>
                   <p>${vagas[i].quantidade}</p>
                   <button type="button" onclick="mostrarCandidatosInscritos(${vagas[i].id})" class="btn btn-success">Candidatos interessados</button>
-                  <button type="button" onclick="deletarVaga(${vagas[i].id})" class="btn btn-danger">Apagar vaga</button>
+                  <button type="button" onclick="deletarVaga(${vagas[i].id}, '${vagas[i].cargo}')" class="btn btn-danger">Apagar vaga</button>
                 </div>
               </dd>
             </div>`);
@@ -378,9 +379,10 @@ function mostrarCandidatosInscritos(vagaId) {
 //   });
 // }
 
-function deletarVaga(vagaId) {
+function deletarVaga(vagaId, cargo) {
 
-  axios.delete(
+  if (confirm(`Você realmente deseja excluir a vaga de ${cargo}?`)) {
+      axios.delete(
     `${baseURL}/vaga/${vagaId}`, {
       headers: {
         Authorization: `Bearer ${usuarioLogado.access_token}`
@@ -393,6 +395,7 @@ function deletarVaga(vagaId) {
     .catch(function (error) {
       alert("Ocorreu um erro ao excluir a vaga.")
     });
+  }
 }
 
 function listaCandidatos() {
